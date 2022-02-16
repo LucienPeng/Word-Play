@@ -30,7 +30,7 @@ section {
         align-items: center;
         justify-content: center;
         p.guessed-alphabet-style {
-          color: #075ab9;
+          color: #6c757d;
           font-size: 4rem;
           margin-top: 0;
           margin-bottom: 0;
@@ -38,18 +38,30 @@ section {
       }
       .col.alphabet.correctBoth {
         background-color: #07b975;
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+        transition: all 2s ease-out;
+
         p {
           color: #fff;
         }
       }
       .col.alphabet.correctOne {
         background-color: #e07a5f;
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+        transition: all 2s ease-out;
+
         p {
           color: #fff;
         }
       }
       .col.alphabet.correctNone {
         background-color: #b8b9bb;
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+        transition: all 2s ease-out;
+
         p {
           color: #fff;
         }
@@ -61,7 +73,8 @@ section {
 
     .row {
       .col {
-        background-color: gray;
+        background-color: #b8b9bb;
+        color: #fff;
         height: 3rem;
         width: 3rem;
         margin: 0.1rem;
@@ -83,7 +96,12 @@ section {
       }
       .col:hover {
         cursor: pointer;
-        opacity: 0.8;
+        box-shadow: 1px 1px 2px #a19c9c;
+        background-color: #7e7e80;
+      }
+      .col.checked {
+        background-color: #444444;
+        transition: all 0.5s ease-out;
       }
       .col.enter {
         width: 4.5rem;

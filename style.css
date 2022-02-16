@@ -39,7 +39,7 @@ section .container.guess .row .col.alphabet {
 }
 
 section .container.guess .row .col.alphabet p.guessed-alphabet-style {
-  color: #075ab9;
+  color: #6c757d;
   font-size: 4rem;
   margin-top: 0;
   margin-bottom: 0;
@@ -47,6 +47,12 @@ section .container.guess .row .col.alphabet p.guessed-alphabet-style {
 
 section .container.guess .row .col.alphabet.correctBoth {
   background-color: #07b975;
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctBoth p {
@@ -55,6 +61,12 @@ section .container.guess .row .col.alphabet.correctBoth p {
 
 section .container.guess .row .col.alphabet.correctOne {
   background-color: #e07a5f;
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctOne p {
@@ -63,6 +75,12 @@ section .container.guess .row .col.alphabet.correctOne p {
 
 section .container.guess .row .col.alphabet.correctNone {
   background-color: #b8b9bb;
+  -webkit-transform: rotateY(360deg);
+          transform: rotateY(360deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 2s ease-out;
+  transition: all 2s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctNone p {
@@ -74,7 +92,8 @@ section .container.keyboard {
 }
 
 section .container.keyboard .row .col {
-  background-color: gray;
+  background-color: #b8b9bb;
+  color: #fff;
   height: 3rem;
   width: 3rem;
   margin: 0.1rem;
@@ -98,7 +117,15 @@ section .container.keyboard .row .col::before {
 
 section .container.keyboard .row .col:hover {
   cursor: pointer;
-  opacity: 0.8;
+  -webkit-box-shadow: 1px 1px 2px #a19c9c;
+          box-shadow: 1px 1px 2px #a19c9c;
+  background-color: #7e7e80;
+}
+
+section .container.keyboard .row .col.checked {
+  background-color: #444444;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 section .container.keyboard .row .col.enter {
