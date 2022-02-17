@@ -20,15 +20,37 @@ let guessedArrR6 = [];
 
 //題庫
 const questionsDB = [
-  { id: 1, question: "AFTER" },
-  { id: 2, question: "SALUT" },
-  { id: 3, question: "GANDI" },
+  { id: 1, question: "LUCKY" },
+  { id: 2, question: "WINDY" },
+  { id: 3, question: "GRAND" },
+  { id: 4, question: "FRONT" },
+  { id: 5, question: "FRAUD" },
+  { id: 6, question: "MONEY" },
+  { id: 7, question: "FAINT" },
+  { id: 8, question: "LIGHT" },
+  { id: 9, question: "FAKER" },
+  { id: 10, question: "AGONY" },
 ];
+
+//自動出題
+let question = "";
+function randomQuestion() {
+  let random = Math.floor(Math.random() * 10) + 1;
+
+  for (let i = 0; i < questionsDB.length; i++) {
+    if (random === questionsDB[i].id) {
+      question = questionsDB[i].question;
+    }
+  }
+  return question;
+}
 
 //Round1
 
 Round1();
 function Round1() {
+  console.log(randomQuestion());
+
   // 用來計算已輸入字母個數
   let counter1 = -1;
 
@@ -63,7 +85,7 @@ function Round1() {
     } else {
       for (let i = 0; i < guessedArrR1.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR1[i] === questionsDB[0].question[i]) {
+        if (guessedArrR1[i] === question[i]) {
           guessAnswerR1[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -72,7 +94,7 @@ function Round1() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR1[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR1[i]) !== -1) {
           guessAnswerR1[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -81,7 +103,7 @@ function Round1() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR1[i]) === -1) {
+        } else if (question.indexOf(guessedArrR1[i]) === -1) {
           guessAnswerR1[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR1[i] === keyboard[l].childNodes[0].innerText) {
@@ -97,7 +119,7 @@ function Round1() {
     enterBtn.removeEventListener("click", enterR1);
     deleteBtn.removeEventListener("click", deleteR1);
     //  判斷勝利與否
-    if (questionsDB[0].question === guessedArrR1.join("")) {
+    if (question === guessedArrR1.join("")) {
       console.log("You won the game!");
       return;
     }
@@ -151,7 +173,7 @@ function Round2() {
     } else {
       for (let i = 0; i < guessedArrR2.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR2[i] === questionsDB[0].question[i]) {
+        if (guessedArrR2[i] === question[i]) {
           guessAnswerR2[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -160,7 +182,7 @@ function Round2() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR2[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR2[i]) !== -1) {
           guessAnswerR2[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -169,7 +191,7 @@ function Round2() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR2[i]) === -1) {
+        } else if (question.indexOf(guessedArrR2[i]) === -1) {
           guessAnswerR2[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR2[i] === keyboard[l].childNodes[0].innerText) {
@@ -185,7 +207,7 @@ function Round2() {
     enterBtn.removeEventListener("click", enterR2);
     deleteBtn.removeEventListener("click", deleteR2);
     //  判斷勝利與否
-    if (questionsDB[0].question === guessedArrR2.join("")) {
+    if (question === guessedArrR2.join("")) {
       console.log("You won the game!");
       return;
     }
@@ -239,7 +261,7 @@ function Round3() {
     } else {
       for (let i = 0; i < guessedArrR3.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR3[i] === questionsDB[0].question[i]) {
+        if (guessedArrR3[i] === question[i]) {
           guessAnswerR3[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -248,7 +270,7 @@ function Round3() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR3[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR3[i]) !== -1) {
           guessAnswerR3[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -257,7 +279,7 @@ function Round3() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR3[i]) === -1) {
+        } else if (question.indexOf(guessedArrR3[i]) === -1) {
           guessAnswerR3[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR3[i] === keyboard[l].childNodes[0].innerText) {
@@ -273,7 +295,7 @@ function Round3() {
     enterBtn.removeEventListener("click", enterR3);
     deleteBtn.removeEventListener("click", deleteR3);
     //  判斷勝利與否
-    if (questionsDB[0].question === guessedArrR3.join("")) {
+    if (question === guessedArrR3.join("")) {
       console.log("You won the game!");
       return;
     }
@@ -327,7 +349,7 @@ function Round4() {
     } else {
       for (let i = 0; i < guessedArrR4.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR4[i] === questionsDB[0].question[i]) {
+        if (guessedArrR4[i] === question[i]) {
           guessAnswerR4[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -336,7 +358,7 @@ function Round4() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR4[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR4[i]) !== -1) {
           guessAnswerR4[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -345,7 +367,7 @@ function Round4() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR4[i]) === -1) {
+        } else if (question.indexOf(guessedArrR4[i]) === -1) {
           guessAnswerR4[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR4[i] === keyboard[l].childNodes[0].innerText) {
@@ -361,7 +383,7 @@ function Round4() {
     enterBtn.removeEventListener("click", enterR4);
     deleteBtn.removeEventListener("click", deleteR4);
     //  判斷勝利與否
-    if (questionsDB[0].question === guessedArrR4.join("")) {
+    if (question === guessedArrR4.join("")) {
       console.log("You won the game!");
       return;
     }
@@ -415,7 +437,7 @@ function Round5() {
     } else {
       for (let i = 0; i < guessedArrR5.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR5[i] === questionsDB[0].question[i]) {
+        if (guessedArrR5[i] === question[i]) {
           guessAnswerR5[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -424,7 +446,7 @@ function Round5() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR5[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR5[i]) !== -1) {
           guessAnswerR5[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -433,7 +455,7 @@ function Round5() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR5[i]) === -1) {
+        } else if (question.indexOf(guessedArrR5[i]) === -1) {
           guessAnswerR5[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR5[i] === keyboard[l].childNodes[0].innerText) {
@@ -449,7 +471,7 @@ function Round5() {
     enterBtn.removeEventListener("click", enterR5);
     deleteBtn.removeEventListener("click", deleteR5);
     //  判斷勝利與否
-    if (questionsDB[0].question === guessedArrR5.join("")) {
+    if (question === guessedArrR5.join("")) {
       console.log("You won the game!");
       return;
     }
@@ -503,7 +525,7 @@ function Round6() {
     } else {
       for (let i = 0; i < guessedArrR6.length; i++) {
         //判斷作答是否完全正確，若是則給予綠色背景。
-        if (guessedArrR6[i] === questionsDB[0].question[i]) {
+        if (guessedArrR6[i] === question[i]) {
           guessAnswerR6[i].parentElement.classList.add("correctBoth");
           // 更改字母鍵盤顏色
           for (let j = 0; j < keyboard.length; j++) {
@@ -512,7 +534,7 @@ function Round6() {
             }
           }
           //判斷作答是否只有位置正確，若是則給予橘色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR6[i]) !== -1) {
+        } else if (question.indexOf(guessedArrR6[i]) !== -1) {
           guessAnswerR6[i].parentElement.classList.add("correctOne");
           // 更改字母鍵盤顏色
           for (let k = 0; k < keyboard.length; k++) {
@@ -521,7 +543,7 @@ function Round6() {
             }
           }
           //判斷作答是否完全不吻合，若是則給予灰色背景。
-        } else if (questionsDB[0].question.indexOf(guessedArrR6[i]) === -1) {
+        } else if (question.indexOf(guessedArrR6[i]) === -1) {
           guessAnswerR6[i].parentElement.classList.add("correctNone");
           for (let l = 0; l < keyboard.length; l++) {
             if (guessedArrR6[i] === keyboard[l].childNodes[0].innerText) {
@@ -538,7 +560,7 @@ function Round6() {
     deleteBtn.removeEventListener("click", deleteR6);
   }
   //  判斷勝利與否
-  if (questionsDB[0].question === guessedArrR6.join("")) {
+  if (question === guessedArrR6.join("")) {
     console.log("You won the game!");
     return;
   }
