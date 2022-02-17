@@ -45,6 +45,8 @@ function randomQuestion() {
   return question;
 }
 
+let verification = "";
+
 //Round1
 
 Round1();
@@ -76,11 +78,27 @@ function Round1() {
     }
   }
 
+  function isVacabularyAPI() {
+    return new Promise((resolve, reject) => {
+      const response = axios
+        .get("https://api.dictionaryapi.dev/api/v2/entries/en/happy")
+        .then(function (response) {
+          resolve(response.data[0].word.toUpperCase());
+        });
+    });
+  }
+
+  async function isVacabulary() {
+    const verification = await isVacabularyAPI();
+    console.log(verification);
+  }
+  isVacabulary();
+
   //監聽按下ENTER
   enterBtn.addEventListener("click", enterR1);
   function enterR1() {
-    //如果陣列長度（作答）不超過5，則不繼續執行。
     if (guessedArrR1.length < 5) {
+      //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
       for (let i = 0; i < guessedArrR1.length; i++) {
@@ -113,6 +131,10 @@ function Round1() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR1);
+        //  作答正確動畫
+        if (question === guessedArrR1.join("")) {
+          guessAnswerR1[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -120,7 +142,6 @@ function Round1() {
     deleteBtn.removeEventListener("click", deleteR1);
     //  判斷勝利與否
     if (question === guessedArrR1.join("")) {
-      console.log("You won the game!");
       return;
     }
     Round2();
@@ -199,6 +220,10 @@ function Round2() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR2);
+        //  作答正確動畫
+        if (question === guessedArrR2.join("")) {
+          guessAnswerR2[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -206,7 +231,6 @@ function Round2() {
     deleteBtn.removeEventListener("click", deleteR2);
     //  判斷勝利與否
     if (question === guessedArrR2.join("")) {
-      console.log("You won the game!");
       return;
     }
     Round3();
@@ -285,6 +309,10 @@ function Round3() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR3);
+        //  作答正確動畫
+        if (question === guessedArrR3.join("")) {
+          guessAnswerR3[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -292,7 +320,6 @@ function Round3() {
     deleteBtn.removeEventListener("click", deleteR3);
     //  判斷勝利與否
     if (question === guessedArrR3.join("")) {
-      console.log("You won the game!");
       return;
     }
     Round4();
@@ -371,6 +398,10 @@ function Round4() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR4);
+        //  作答正確動畫
+        if (question === guessedArrR4.join("")) {
+          guessAnswerR4[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -378,7 +409,6 @@ function Round4() {
     deleteBtn.removeEventListener("click", deleteR4);
     //  判斷勝利與否
     if (question === guessedArrR4.join("")) {
-      console.log("You won the game!");
       return;
     }
     Round5();
@@ -457,6 +487,10 @@ function Round5() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR5);
+        //  作答正確動畫
+        if (question === guessedArrR5.join("")) {
+          guessAnswerR5[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -464,7 +498,6 @@ function Round5() {
     deleteBtn.removeEventListener("click", deleteR5);
     //  判斷勝利與否
     if (question === guessedArrR5.join("")) {
-      console.log("You won the game!");
       return;
     }
     Round6();
@@ -543,6 +576,10 @@ function Round6() {
         }
         //按下確定後，取消第一回合的虛擬鍵盤監聽。
         keyboard[i].removeEventListener("click", inputR6);
+        //  作答正確動畫
+        if (question === guessedArrR6.join("")) {
+          guessAnswerR6[i].parentElement.classList.add("correctAll");
+        }
       }
     }
     //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
@@ -551,7 +588,6 @@ function Round6() {
   }
   //  判斷勝利與否
   if (question === guessedArrR6.join("")) {
-    console.log("You won the game!");
     return;
   }
 

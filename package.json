@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/LucienPeng/Word-Play/issues"
   },
-  "homepage": "https://github.com/LucienPeng/Word-Play#readme"
+  "homepage": "https://github.com/LucienPeng/Word-Play#readme",
+  "dependencies": {
+    "axios": "^0.26.0"
+  }
 }
