@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "kesiang.peng@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucienPeng/Word-Play.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LucienPeng/Word-Play/issues"
+  },
+  "homepage": "https://github.com/LucienPeng/Word-Play#readme"
 }
