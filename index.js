@@ -25,11 +25,11 @@ const questionsDB = [
   { id: 3, question: "GRAND" },
   { id: 4, question: "FRONT" },
   { id: 5, question: "FRAUD" },
-  { id: 6, question: "MONEY" },
+  { id: 6, question: "WINDY" },
   { id: 7, question: "FAINT" },
   { id: 8, question: "LIGHT" },
   { id: 9, question: "FAKER" },
-  { id: 10, question: "AGONY" },
+  { id: 10, question: "STAMP" },
 ];
 
 //自動出題
@@ -151,8 +151,6 @@ function Round2() {
 
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
       let showGuess = (guessTimes) => {
-        //將已點選的虛擬按鍵上深色
-        keyboard[i].classList.add("checked");
         guessAnswerR2[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR2.push(keyboard[i].childNodes[0].innerText);
@@ -239,8 +237,6 @@ function Round3() {
 
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
       let showGuess = (guessTimes) => {
-        //將已點選的虛擬按鍵上深色
-        keyboard[i].classList.add("checked");
         guessAnswerR3[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR3.push(keyboard[i].childNodes[0].innerText);
@@ -327,8 +323,6 @@ function Round4() {
 
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
       let showGuess = (guessTimes) => {
-        //將已點選的虛擬按鍵上深色
-        keyboard[i].classList.add("checked");
         guessAnswerR4[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR4.push(keyboard[i].childNodes[0].innerText);
@@ -415,8 +409,6 @@ function Round5() {
 
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
       let showGuess = (guessTimes) => {
-        //將已點選的虛擬按鍵上深色
-        keyboard[i].classList.add("checked");
         guessAnswerR5[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR5.push(keyboard[i].childNodes[0].innerText);
@@ -503,8 +495,6 @@ function Round6() {
 
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
       let showGuess = (guessTimes) => {
-        //將已點選的虛擬按鍵上深色
-        keyboard[i].classList.add("checked");
         guessAnswerR6[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR6.push(keyboard[i].childNodes[0].innerText);

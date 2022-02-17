@@ -72,6 +72,23 @@ section {
           transition: all 0.5s ease-out;
         }
       }
+      .col.alphabet.correctNone {
+        border: 2px solid #6c757d;
+        background-color: #b8b9bb;
+        transform: rotateX(360deg);
+        transform-style: preserve-3d;
+        transition: all 1.5s ease;
+        p {
+          color: #fff;
+          font-size: 4rem;
+          transition: all 0.5s ease-out;
+        }
+      }
+      .col.alphabet.correctAll {
+        transform: rotateZ(360deg);
+        transform-style: preserve-3d;
+        transition: all 1.5s ease;
+      }
     }
   }
   .container.keyboard {

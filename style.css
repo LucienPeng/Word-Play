@@ -99,6 +99,33 @@ section .container.guess .row .col.alphabet.correctNone p {
   transition: all 0.5s ease-out;
 }
 
+section .container.guess .row .col.alphabet.correctNone {
+  border: 2px solid #6c757d;
+  background-color: #b8b9bb;
+  -webkit-transform: rotateX(360deg);
+          transform: rotateX(360deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+}
+
+section .container.guess .row .col.alphabet.correctNone p {
+  color: #fff;
+  font-size: 4rem;
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+section .container.guess .row .col.alphabet.correctAll {
+  -webkit-transform: rotateZ(360deg);
+          transform: rotateZ(360deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: all 1.5s ease;
+  transition: all 1.5s ease;
+}
+
 section .container.keyboard {
   margin-top: 3rem;
 }
