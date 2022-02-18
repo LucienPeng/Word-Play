@@ -115,6 +115,7 @@ function Round1() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           console.log(guessedArrR1);
@@ -261,6 +262,7 @@ function Round2() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR2.length; i++) {
@@ -404,6 +406,7 @@ function Round3() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR3.length; i++) {
@@ -549,6 +552,7 @@ function Round4() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR4.length; i++) {
@@ -693,6 +697,7 @@ function Round5() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR5.length; i++) {
@@ -839,6 +844,7 @@ function Round6() {
         if (verification === "Request failed with status code 404") {
           note.innerText = "This is not a word!";
           note.classList.add("animate__animated", "animate__tada");
+          note.style.width = "15rem";
           note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR6.length; i++) {
