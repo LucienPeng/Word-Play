@@ -18,7 +18,20 @@ nav .collapse {
 
 section {
   max-height: 100vh;
-  margin-top: 3rem;
+}
+
+section .row.alert {
+  margin-bottom: 0;
+}
+
+section .row.alert .col.answer {
+  font-size: 1.5rem;
+  color: #fff;
+  border-radius: 0.3rem;
+  text-align: center;
+  padding: 0.3rem;
+  background-color: #07b975;
+  display: none;
 }
 
 section .container.guess .row .col.alphabet {
@@ -48,86 +61,41 @@ section .container.guess .row .col.alphabet p.guessed-alphabet-style {
 section .container.guess .row .col.alphabet.correctBoth {
   border: 2px solid #6c757d;
   background-color: #07b975;
-  -webkit-transform: rotateX(360deg);
-          transform: rotateX(360deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
 }
 
 section .container.guess .row .col.alphabet.correctBoth p {
   color: #fff;
   font-size: 4rem;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctOne {
   border: 2px solid #6c757d;
   background-color: #e07a5f;
-  -webkit-transform: rotateX(360deg);
-          transform: rotateX(360deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
 }
 
 section .container.guess .row .col.alphabet.correctOne p {
   color: #fff;
   font-size: 4rem;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctNone {
   border: 2px solid #6c757d;
   background-color: #b8b9bb;
-  -webkit-transform: rotateX(360deg);
-          transform: rotateX(360deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
 }
 
 section .container.guess .row .col.alphabet.correctNone p {
   color: #fff;
   font-size: 4rem;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
 }
 
 section .container.guess .row .col.alphabet.correctNone {
   border: 2px solid #6c757d;
   background-color: #b8b9bb;
-  -webkit-transform: rotateX(360deg);
-          transform: rotateX(360deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
 }
 
 section .container.guess .row .col.alphabet.correctNone p {
   color: #fff;
   font-size: 4rem;
-  -webkit-transition: all 0.5s ease-out;
-  transition: all 0.5s ease-out;
-}
-
-section .container.guess .row .col.alphabet.correctAll {
-  -webkit-transform: rotateZ(360deg);
-          transform: rotateZ(360deg);
-  -webkit-transform-style: preserve-3d;
-          transform-style: preserve-3d;
-  -webkit-transition: all 1.5s ease;
-  transition: all 1.5s ease;
-}
-
-section .container.keyboard {
-  margin-top: 3rem;
 }
 
 section .container.keyboard .row .col {
@@ -163,8 +131,6 @@ section .container.keyboard .row .col:hover {
 
 section .container.keyboard .row .col.checked {
   background-color: #444444;
-  -webkit-transition: all 1s ease-out;
-  transition: all 1s ease-out;
 }
 
 section .container.keyboard .row .col.enter {

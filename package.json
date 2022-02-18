@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LucienPeng/Word-Play#readme",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "axios": "^0.26.0"
   }
 }

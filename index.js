@@ -3,6 +3,9 @@ const keyboard = document.querySelectorAll(".keyboard .alphabet");
 const enterBtn = document.querySelector(".enter");
 const deleteBtn = document.querySelector(".backspace");
 
+//宣告提示
+const answer = document.querySelector(".answer");
+
 //將鍵盤輸入值填入作答空格列
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
 const guessAnswerR2 = document.querySelectorAll(".guessed-alphabetR2");
@@ -20,16 +23,16 @@ let guessedArrR6 = [];
 
 //題庫
 const questionsDB = [
-  { id: 1, question: "LUCKY" },
-  { id: 2, question: "WINDY" },
-  { id: 3, question: "GRAND" },
-  { id: 4, question: "FRONT" },
-  { id: 5, question: "FRAUD" },
-  { id: 6, question: "WINDY" },
-  { id: 7, question: "FAINT" },
-  { id: 8, question: "LIGHT" },
-  { id: 9, question: "FAKER" },
-  { id: 10, question: "STAMP" },
+  { id: 1, question: "QUERY" },
+  { id: 2, question: "BEAST" },
+  { id: 3, question: "COULD" },
+  { id: 4, question: "DOUBT" },
+  { id: 5, question: "PANIC" },
+  { id: 6, question: "FRAUD" },
+  { id: 7, question: "HEAVY" },
+  { id: 8, question: "FIGHT" },
+  { id: 9, question: "BULKY" },
+  { id: 10, question: "JUDGE" },
 ];
 
 //自動出題
@@ -49,7 +52,7 @@ console.log(randomQuestion());
 let verification = "";
 
 //Round1
-Round1();
+//Round1();
 function Round1() {
   // 用來計算已輸入字母個數
   let counter1 = -1;
@@ -108,7 +111,6 @@ function Round1() {
         if (verification === "Request failed with status code 404") {
           alert("This is not a word!");
         } else {
-          console.log(guessAnswerR1);
           console.log(guessedArrR1);
           for (let i = 0; i < guessedArrR1.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
@@ -205,7 +207,6 @@ function Round2() {
       //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
-      console.log(guessAnswerR2);
       console.log(guessedArrR2);
       //透過API串接字典驗證是否為有意義的單字
       function isVacabularyAPI() {
@@ -326,7 +327,6 @@ function Round3() {
       //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
-      console.log(guessAnswerR3);
       console.log(guessedArrR3);
       //透過API串接字典驗證是否為有意義的單字
       function isVacabularyAPI() {
@@ -449,7 +449,6 @@ function Round4() {
       //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
-      console.log(guessAnswerR4);
       console.log(guessedArrR4);
       //透過API串接字典驗證是否為有意義的單字
       function isVacabularyAPI() {
@@ -537,6 +536,7 @@ function Round4() {
   }
 }
 
+Round5();
 //Round5
 function Round5() {
   // 用來計算已輸入字母個數
@@ -571,7 +571,6 @@ function Round5() {
       //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
-      console.log(guessAnswerR5);
       console.log(guessedArrR5);
       //透過API串接字典驗證是否為有意義的單字
       function isVacabularyAPI() {
@@ -602,6 +601,10 @@ function Round5() {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR5[i] === question[i]) {
               guessAnswerR5[i].parentElement.classList.add("correctBoth");
+              guessAnswerR5[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR5[i] === keyboard[j].childNodes[0].innerText) {
@@ -611,6 +614,10 @@ function Round5() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR5[i]) !== -1) {
               guessAnswerR5[i].parentElement.classList.add("correctOne");
+              guessAnswerR5[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR5[i] === keyboard[k].childNodes[0].innerText) {
@@ -620,6 +627,10 @@ function Round5() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR5[i]) === -1) {
               guessAnswerR5[i].parentElement.classList.add("correctNone");
+              guessAnswerR5[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR5[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -631,6 +642,10 @@ function Round5() {
             //  作答正確動畫
             if (question === guessedArrR5.join("")) {
               guessAnswerR5[i].parentElement.classList.add("correctAll");
+              guessAnswerR5[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -687,13 +702,13 @@ function Round6() {
   }
 
   //監聽按下ENTER
+
   enterBtn.addEventListener("click", enterR6);
   function enterR6() {
     if (guessedArrR6.length < 5) {
       //如果陣列長度（作答）不超過5，則不繼續執行
       return;
     } else {
-      console.log(guessAnswerR6);
       console.log(guessedArrR6);
       //透過API串接字典驗證是否為有意義的單字
       function isVacabularyAPI() {
@@ -716,6 +731,7 @@ function Round6() {
       isVacabulary();
       async function isVacabulary() {
         const verification = await isVacabularyAPI();
+        const winCheck = await isWin();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
           console.log("This is not a word!");
@@ -724,6 +740,10 @@ function Round6() {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR6[i] === question[i]) {
               guessAnswerR6[i].parentElement.classList.add("correctBoth");
+              guessAnswerR6[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__bounceIn"
+              );
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR6[i] === keyboard[j].childNodes[0].innerText) {
@@ -733,6 +753,10 @@ function Round6() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR6[i]) !== -1) {
               guessAnswerR6[i].parentElement.classList.add("correctOne");
+              guessAnswerR6[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__bounceIn"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR6[i] === keyboard[k].childNodes[0].innerText) {
@@ -742,6 +766,10 @@ function Round6() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR6[i]) === -1) {
               guessAnswerR6[i].parentElement.classList.add("correctNone");
+              guessAnswerR6[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__bounceIn"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR6[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -753,6 +781,10 @@ function Round6() {
             //  作答正確動畫
             if (question === guessedArrR6.join("")) {
               guessAnswerR6[i].parentElement.classList.add("correctAll");
+              guessAnswerR6[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -765,8 +797,13 @@ function Round6() {
       }
     }
     //  判斷勝利與否
-    if (question === guessedArrR6.join("")) {
-      return;
+    function isWin() {
+      if (question === guessedArrR6.join("")) {
+        return;
+      } else {
+        answer.innerText = question;
+        answer.style.display = "block";
+      }
     }
   }
 

@@ -17,7 +17,18 @@ nav {
 
 section {
   max-height: 100vh;
-  margin-top: 3rem;
+  .row.alert {
+    margin-bottom: 0;
+    .col.answer {
+      font-size: 1.5rem;
+      color: #fff;
+      border-radius: 0.3rem;
+      text-align: center;
+      padding: 0.3rem;
+      background-color: #07b975;
+      display: none;
+    }
+  }
   .container.guess {
     .row {
       .col.alphabet {
@@ -39,61 +50,40 @@ section {
       .col.alphabet.correctBoth {
         border: 2px solid #6c757d;
         background-color: #07b975;
-        transform: rotateX(360deg);
-        transform-style: preserve-3d;
-        transition: all 1.5s ease;
+
         p {
           color: #fff;
           font-size: 4rem;
-          transition: all 0.5s ease-out;
         }
       }
       .col.alphabet.correctOne {
         border: 2px solid #6c757d;
         background-color: #e07a5f;
-        transform: rotateX(360deg);
-        transform-style: preserve-3d;
-        transition: all 1.5s ease;
         p {
           color: #fff;
           font-size: 4rem;
-          transition: all 0.5s ease-out;
         }
       }
       .col.alphabet.correctNone {
         border: 2px solid #6c757d;
         background-color: #b8b9bb;
-        transform: rotateX(360deg);
-        transform-style: preserve-3d;
-        transition: all 1.5s ease;
         p {
           color: #fff;
           font-size: 4rem;
-          transition: all 0.5s ease-out;
         }
       }
       .col.alphabet.correctNone {
         border: 2px solid #6c757d;
         background-color: #b8b9bb;
-        transform: rotateX(360deg);
-        transform-style: preserve-3d;
-        transition: all 1.5s ease;
+
         p {
           color: #fff;
           font-size: 4rem;
-          transition: all 0.5s ease-out;
         }
-      }
-      .col.alphabet.correctAll {
-        transform: rotateZ(360deg);
-        transform-style: preserve-3d;
-        transition: all 1.5s ease;
       }
     }
   }
   .container.keyboard {
-    margin-top: 3rem;
-
     .row {
       .col {
         background-color: #b8b9bb;
@@ -124,7 +114,6 @@ section {
       }
       .col.checked {
         background-color: #444444;
-        transition: all 1s ease-out;
       }
       .col.enter {
         width: 4.5rem;
