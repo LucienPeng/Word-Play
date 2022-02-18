@@ -4,7 +4,7 @@ const enterBtn = document.querySelector(".enter");
 const deleteBtn = document.querySelector(".backspace");
 
 //宣告提示
-const answer = document.querySelector(".answer");
+const note = document.querySelector(".note");
 
 //將鍵盤輸入值填入作答空格列
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
@@ -52,7 +52,7 @@ console.log(randomQuestion());
 let verification = "";
 
 //Round1
-//Round1();
+Round1();
 function Round1() {
   // 用來計算已輸入字母個數
   let counter1 = -1;
@@ -68,6 +68,10 @@ function Round1() {
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR1[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR1[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR1.push(keyboard[i].childNodes[0].innerText);
@@ -109,13 +113,20 @@ function Round1() {
         const verification = await isVacabularyAPI();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          alert("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           console.log(guessedArrR1);
           for (let i = 0; i < guessedArrR1.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR1[i] === question[i]) {
               guessAnswerR1[i].parentElement.classList.add("correctBoth");
+              guessAnswerR1[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
+
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR1[i] === keyboard[j].childNodes[0].innerText) {
@@ -125,6 +136,10 @@ function Round1() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR1[i]) !== -1) {
               guessAnswerR1[i].parentElement.classList.add("correctOne");
+              guessAnswerR1[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR1[i] === keyboard[k].childNodes[0].innerText) {
@@ -134,6 +149,10 @@ function Round1() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR1[i]) === -1) {
               guessAnswerR1[i].parentElement.classList.add("correctNone");
+              guessAnswerR1[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR1[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -145,6 +164,10 @@ function Round1() {
             //  作答正確動畫
             if (question === guessedArrR1.join("")) {
               guessAnswerR1[i].parentElement.classList.add("correctAll");
+              guessAnswerR1[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -170,6 +193,7 @@ function Round1() {
     guessAnswerR1[counter1].innerText = "";
     guessedArrR1.pop(keyboard[counter1].childNodes[0].innerText);
     counter1 -= 1;
+    note.style.display = "none";
   }
 }
 
@@ -189,6 +213,10 @@ function Round2() {
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR2[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR2[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR2.push(keyboard[i].childNodes[0].innerText);
@@ -231,12 +259,18 @@ function Round2() {
         const verification = await isVacabularyAPI();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          console.log("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR2.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR2[i] === question[i]) {
               guessAnswerR2[i].parentElement.classList.add("correctBoth");
+              guessAnswerR2[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR2[i] === keyboard[j].childNodes[0].innerText) {
@@ -246,6 +280,10 @@ function Round2() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR2[i]) !== -1) {
               guessAnswerR2[i].parentElement.classList.add("correctOne");
+              guessAnswerR2[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR2[i] === keyboard[k].childNodes[0].innerText) {
@@ -255,6 +293,10 @@ function Round2() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR2[i]) === -1) {
               guessAnswerR2[i].parentElement.classList.add("correctNone");
+              guessAnswerR2[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR2[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -266,6 +308,10 @@ function Round2() {
             //  作答正確動畫
             if (question === guessedArrR2.join("")) {
               guessAnswerR2[i].parentElement.classList.add("correctAll");
+              guessAnswerR2[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -291,6 +337,7 @@ function Round2() {
     guessAnswerR2[counter2].innerText = "";
     guessedArrR2.pop(keyboard[counter2].childNodes[0].innerText);
     counter2 -= 1;
+    note.style.display = "none";
   }
 }
 
@@ -310,6 +357,10 @@ function Round3() {
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR3[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR3[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR3.push(keyboard[i].childNodes[0].innerText);
@@ -351,12 +402,18 @@ function Round3() {
         const verification = await isVacabularyAPI();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          console.log("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR3.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR3[i] === question[i]) {
               guessAnswerR3[i].parentElement.classList.add("correctBoth");
+              guessAnswerR3[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR3[i] === keyboard[j].childNodes[0].innerText) {
@@ -366,6 +423,10 @@ function Round3() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR3[i]) !== -1) {
               guessAnswerR3[i].parentElement.classList.add("correctOne");
+              guessAnswerR3[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR3[i] === keyboard[k].childNodes[0].innerText) {
@@ -375,6 +436,10 @@ function Round3() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR3[i]) === -1) {
               guessAnswerR3[i].parentElement.classList.add("correctNone");
+              guessAnswerR3[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR3[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -386,6 +451,10 @@ function Round3() {
             //  作答正確動畫
             if (question === guessedArrR3.join("")) {
               guessAnswerR3[i].parentElement.classList.add("correctAll");
+              guessAnswerR3[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -412,6 +481,7 @@ function Round3() {
     guessAnswerR3[counter3].innerText = "";
     guessedArrR3.pop(keyboard[counter3].childNodes[0].innerText);
     counter3 -= 1;
+    note.style.display = "none";
   }
 }
 
@@ -431,6 +501,10 @@ function Round4() {
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR4[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR4[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR4.push(keyboard[i].childNodes[0].innerText);
@@ -473,12 +547,18 @@ function Round4() {
         const verification = await isVacabularyAPI();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          console.log("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR4.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR4[i] === question[i]) {
               guessAnswerR4[i].parentElement.classList.add("correctBoth");
+              guessAnswerR4[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR4[i] === keyboard[j].childNodes[0].innerText) {
@@ -488,6 +568,10 @@ function Round4() {
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR4[i]) !== -1) {
               guessAnswerR4[i].parentElement.classList.add("correctOne");
+              guessAnswerR4[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR4[i] === keyboard[k].childNodes[0].innerText) {
@@ -497,6 +581,10 @@ function Round4() {
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR4[i]) === -1) {
               guessAnswerR4[i].parentElement.classList.add("correctNone");
+              guessAnswerR4[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flipInY"
+              );
               for (let l = 0; l < keyboard.length; l++) {
                 if (guessedArrR4[i] === keyboard[l].childNodes[0].innerText) {
                   keyboard[l].style.backgroundColor = "#444444";
@@ -508,6 +596,10 @@ function Round4() {
             //  作答正確動畫
             if (question === guessedArrR4.join("")) {
               guessAnswerR4[i].parentElement.classList.add("correctAll");
+              guessAnswerR4[i].parentElement.classList.add(
+                "animate__animated",
+                "animate__flip"
+              );
             }
           }
           if (verification === verification && verification.length === 5) {
@@ -533,10 +625,10 @@ function Round4() {
     guessAnswerR4[counter4].innerText = "";
     guessedArrR4.pop(keyboard[counter4].childNodes[0].innerText);
     counter4 -= 1;
+    note.style.display = "none";
   }
 }
 
-Round5();
 //Round5
 function Round5() {
   // 用來計算已輸入字母個數
@@ -553,6 +645,10 @@ function Round5() {
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR5[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR5[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR5.push(keyboard[i].childNodes[0].innerText);
@@ -595,7 +691,9 @@ function Round5() {
         const verification = await isVacabularyAPI();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          console.log("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR5.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
@@ -671,6 +769,7 @@ function Round5() {
     guessAnswerR5[counter5].innerText = "";
     guessedArrR5.pop(keyboard[counter5].childNodes[0].innerText);
     counter5 -= 1;
+    note.style.display = "none";
   }
 }
 
@@ -690,6 +789,10 @@ function Round6() {
       //若輸入未超過6個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
+        guessAnswerR6[guessTimes].parentNode.classList.add(
+          "animate__animated",
+          "animate__bounceIn"
+        );
         guessAnswerR6[guessTimes].innerText =
           keyboard[i].childNodes[0].innerText;
         guessedArrR6.push(keyboard[i].childNodes[0].innerText);
@@ -734,7 +837,9 @@ function Round6() {
         const winCheck = await isWin();
         console.log(verification);
         if (verification === "Request failed with status code 404") {
-          console.log("This is not a word!");
+          note.innerText = "This is not a word!";
+          note.classList.add("animate__animated", "animate__tada");
+          note.style.display = "block";
         } else {
           for (let i = 0; i < guessedArrR6.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
@@ -785,25 +890,26 @@ function Round6() {
                 "animate__animated",
                 "animate__flip"
               );
+            } else {
+              note.innerText = question;
+              note.style.display = "block";
+              return;
             }
           }
-          if (verification === verification && verification.length === 5) {
-            //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
-            enterBtn.removeEventListener("click", enterR6);
-            deleteBtn.removeEventListener("click", deleteR6);
-            return;
-          }
+        }
+        if (verification === verification && verification.length === 5) {
+          //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
+          enterBtn.removeEventListener("click", enterR6);
+          deleteBtn.removeEventListener("click", deleteR6);
+          return;
         }
       }
     }
-    //  判斷勝利與否
-    function isWin() {
-      if (question === guessedArrR6.join("")) {
-        return;
-      } else {
-        answer.innerText = question;
-        answer.style.display = "block";
-      }
+  }
+  //  判斷勝利與否
+  function isWin() {
+    if (question === guessedArrR6.join("")) {
+      return;
     }
   }
 
@@ -815,5 +921,6 @@ function Round6() {
     guessAnswerR6[counter6].innerText = "";
     guessedArrR6.pop(keyboard[counter6].childNodes[0].innerText);
     counter6 -= 1;
+    note.style.display = "none";
   }
 }

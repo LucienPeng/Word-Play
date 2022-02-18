@@ -24,7 +24,7 @@ section .row.alert {
   margin-bottom: 0;
 }
 
-section .row.alert .col.answer {
+section .row.alert .col.note {
   font-size: 1.5rem;
   color: #fff;
   border-radius: 0.3rem;
