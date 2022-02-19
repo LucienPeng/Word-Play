@@ -23,16 +23,16 @@ let guessedArrR6 = [];
 
 //題庫
 const questionsDB = [
-  { id: 1, question: "QUERY" },
-  { id: 2, question: "BEAST" },
-  { id: 3, question: "COULD" },
-  { id: 4, question: "DOUBT" },
-  { id: 5, question: "PANIC" },
-  { id: 6, question: "FRAUD" },
-  { id: 7, question: "HEAVY" },
-  { id: 8, question: "FIGHT" },
-  { id: 9, question: "BULKY" },
-  { id: 10, question: "JUDGE" },
+  { id: 1, question: "QUOTE" },
+  { id: 2, question: "VOTER" },
+  { id: 3, question: "RELAY" },
+  { id: 4, question: "ZUMBA" },
+  { id: 5, question: "STOCK" },
+  { id: 6, question: "SHAME" },
+  { id: 7, question: "GIANT" },
+  { id: 8, question: "JEWEL" },
+  { id: 9, question: "BLADE" },
+  { id: 10, question: "QUOTA" },
 ];
 
 //自動出題

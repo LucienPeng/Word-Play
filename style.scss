@@ -93,20 +93,23 @@ section {
         margin: 0.1rem;
         border-radius: 0.2rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         span {
-          display: inline-block;
+          display: block;
           font-size: 1rem;
           font-weight: 500;
         }
       }
-      .col::before {
-        content: "";
-        display: inline-block;
-        width: 0;
-        height: 100%;
-        vertical-align: middle;
-      }
+      // .col::before {
+      //   content: "";
+      //   display: inline-block;
+      //   width: 0;
+      //   height: 100%;
+      //   vertical-align: middle;
+      // }
       .col:hover {
         cursor: pointer;
         box-shadow: 1px 1px 2px #a19c9c;
@@ -120,6 +123,25 @@ section {
       }
       .col.backspace {
         width: 4.5rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .container.keyboard {
+    .row {
+      .col.alphabet {
+        height: 3rem;
+        width: 2rem;
+      }
+      .col.col.enter {
+        height: 3rem;
+        width: 3.5rem;
+      }
+      .col.col.backspace {
+        height: 3rem;
+        width: 3.5rem;
       }
     }
   }

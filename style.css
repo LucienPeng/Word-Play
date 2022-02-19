@@ -106,20 +106,21 @@ section .container.keyboard .row .col {
   margin: 0.1rem;
   border-radius: 0.2rem;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 section .container.keyboard .row .col span {
-  display: inline-block;
+  display: block;
   font-size: 1rem;
   font-weight: 500;
-}
-
-section .container.keyboard .row .col::before {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 100%;
-  vertical-align: middle;
 }
 
 section .container.keyboard .row .col:hover {
@@ -139,5 +140,20 @@ section .container.keyboard .row .col.enter {
 
 section .container.keyboard .row .col.backspace {
   width: 4.5rem;
+}
+
+@media screen and (max-width: 450px) {
+  .container.keyboard .row .col.alphabet {
+    height: 3rem;
+    width: 2rem;
+  }
+  .container.keyboard .row .col.col.enter {
+    height: 3rem;
+    width: 3.5rem;
+  }
+  .container.keyboard .row .col.col.backspace {
+    height: 3rem;
+    width: 3.5rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
