@@ -20,17 +20,17 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#"><h1>Word Play</h1></a>
+          <a class="navbar-brand" href="#"><h1 >Word Play</h1></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#"><i class="bi bi-question-circle-fill"></i></a>
+                <a class="nav-link" aria-current="page" href="#"><i data-bs-toggle="modal" data-bs-target="#instructionModal" class="bi bi-question-circle-fill"></i></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-bar-chart-line-fill"></i>
+                <a class="nav-link" href="#"><i data-bs-toggle="modal" data-bs-target="#statisticModal" class="bi bi-bar-chart-line-fill"></i>
                 </a>
               </li>
               <li class="nav-item">
@@ -44,8 +44,9 @@
           </div>
         </div>
       </nav>
-      <section>
-        <div class="row alert d-flex justify-content-center align-items-center">
+     
+      <section id="exampleModal">
+        <div class="row alert d-flex justify-content-center">
           <div class="col col-1 note animate__animated animate__bounce"></div>
         </div>
       <div class="container guess mt-2">
@@ -130,6 +131,55 @@
         </div>
       </div>
     </section>
+
+    <!-- How-to-play-Modal -->
+    <div class="modal fade" id="instructionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">How To Play</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">Guess the WORDLE in six tries.<br>
+                  Each guess must be a valid five-letter word. Hit the enter button to submit.<br>
+                  After each guess, the color of the tiles will change to show how close your guess was to the word.</div>
+              </div>
+              <h6>Examples</h6>
+              <div class="col">The letter W is in the word and in the correct spot.</div>
+              <div class="col">The letter I is in the word but in the wrong spot.</div>
+              <div class="col">The letter U is not in the word in any spot.</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="statisticModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="statisticModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="statisticModalLabel">Modal title</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
       
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

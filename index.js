@@ -35,6 +35,10 @@ const questionsDB = [
   { id: 10, question: "QUOTA" },
 ];
 
+var statistic = new bootstrap.Modal(document.getElementById("statisticModal"), {
+  keyboard: false,
+});
+
 //自動出題
 let question = "";
 function randomQuestion() {
@@ -175,14 +179,16 @@ function Round1() {
             //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
             enterBtn.removeEventListener("click", enterR1);
             deleteBtn.removeEventListener("click", deleteR1);
-            Round2();
+            //  判斷勝利與否
+            if (question === guessedArrR1.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            } else Round2();
           }
         }
       }
-    }
-    //  判斷勝利與否
-    if (question === guessedArrR1.join("")) {
-      return;
     }
   }
 
@@ -320,14 +326,16 @@ function Round2() {
             //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
             enterBtn.removeEventListener("click", enterR2);
             deleteBtn.removeEventListener("click", deleteR2);
-            Round3();
+            //  判斷勝利與否
+            if (question === guessedArrR2.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            } else Round3();
           }
         }
       }
-    }
-    //  判斷勝利與否
-    if (question === guessedArrR2.join("")) {
-      return;
     }
   }
 
@@ -464,15 +472,16 @@ function Round3() {
             //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
             enterBtn.removeEventListener("click", enterR3);
             deleteBtn.removeEventListener("click", deleteR3);
-            Round4();
-            return;
+            //  判斷勝利與否
+            if (question === guessedArrR3.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            } else Round4();
           }
         }
       }
-    }
-    //  判斷勝利與否
-    if (question === guessedArrR3.join("")) {
-      return;
     }
   }
 
@@ -610,14 +619,16 @@ function Round4() {
             //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
             enterBtn.removeEventListener("click", enterR4);
             deleteBtn.removeEventListener("click", deleteR4);
-            Round5();
+            //  判斷勝利與否
+            if (question === guessedArrR4.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            } else Round5();
           }
         }
       }
-    }
-    //  判斷勝利與否
-    if (question === guessedArrR4.join("")) {
-      return;
     }
   }
 
@@ -755,14 +766,16 @@ function Round5() {
             //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
             enterBtn.removeEventListener("click", enterR5);
             deleteBtn.removeEventListener("click", deleteR5);
-            Round6();
+            //  判斷勝利與否
+            if (question === guessedArrR5.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            } else Round6();
           }
         }
       }
-    }
-    //  判斷勝利與否
-    if (question === guessedArrR5.join("")) {
-      return;
     }
   }
 
@@ -907,15 +920,17 @@ function Round6() {
           //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
           enterBtn.removeEventListener("click", enterR6);
           deleteBtn.removeEventListener("click", deleteR6);
-          return;
+          //  判斷勝利與否
+          function isWin() {
+            if (question === guessedArrR6.join("")) {
+              setTimeout(() => {
+                statistic.show();
+              }, 1500);
+              return;
+            }
+          }
         }
       }
-    }
-  }
-  //  判斷勝利與否
-  function isWin() {
-    if (question === guessedArrR6.join("")) {
-      return;
     }
   }
 
