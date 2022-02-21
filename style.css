@@ -162,4 +162,26 @@ section .container.keyboard .row .col.backspace {
     width: 3.5rem;
   }
 }
+
+#instructionModal h5 {
+  text-align: center;
+  font-family: DM Sans, sans-serif;
+}
+
+#statisticModal h5 {
+  text-align: center;
+  font-family: DM Sans, sans-serif;
+}
+
+#statisticModal .records {
+  text-align: center;
+}
+
+#statisticModal .records h6 {
+  display: block;
+}
+
+#statisticModal .records span {
+  display: block;
+}
 /*# sourceMappingURL=style.css.map */

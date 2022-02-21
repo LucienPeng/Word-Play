@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS v5.0.2 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link
     rel="stylesheet"
@@ -136,11 +137,12 @@
     <div class="modal fade" id="instructionModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">How To Play</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
+            
           <div class="modal-body">
+            <div class="row d-flex justify-content-end">            
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <h5>How To Play</h5>
             <div class="container-fluid">
               <div class="row">
                 <div class="col">Guess the WORDLE in six tries.<br>
@@ -148,9 +150,33 @@
                   After each guess, the color of the tiles will change to show how close your guess was to the word.</div>
               </div>
               <h6>Examples</h6>
-              <div class="col">The letter W is in the word and in the correct spot.</div>
-              <div class="col">The letter I is in the word but in the wrong spot.</div>
-              <div class="col">The letter U is not in the word in any spot.</div>
+              <div class="col">The letter W is in the word and in the correct spot.
+                <div class="row">
+                  <div class="col-1">W</div>
+                  <div class="col-1">O</div>
+                  <div class="col-1">R</div>
+                  <div class="col-1">L</div>
+                  <div class="col-1">D</div>
+                </div>
+              </div>
+              <div class="col">The letter I is in the word but in the wrong spot.
+                <div class="row">
+                  <div class="col-1">W</div>
+                  <div class="col-1">O</div>
+                  <div class="col-1">R</div>
+                  <div class="col-1">L</div>
+                  <div class="col-1">D</div>
+                </div>
+            </div>
+            <div class="col">The letter U is not in the word in any spot.
+              <div class="row">
+                  <div class="col-1">W</div>
+                  <div class="col-1">O</div>
+                  <div class="col-1">R</div>
+                  <div class="col-1">L</div>
+                  <div class="col-1">D</div>
+              </div>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -164,16 +190,46 @@
     <div class="modal fade" id="statisticModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="statisticModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-md">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="statisticModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div class="modal-body">
-            ...
+
+            <div class="row d-flex justify-content-end">
+              <div class="col col-1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            </div>
+
+              <div class="col mb-4"><h5>STATISTICS</h5></div>
+              
+              <div class="row records mb-4">
+                <div class="col d-flex flex-column">
+                  <h6>0</h6>
+                  <span>Played</span>
+                </div>
+                <div class="col d-flex flex-column">
+                  <h6>0</h6>
+                  <span>Win %</span>
+                </div>
+                <div class="col d-flex flex-column">
+                  <h6>0</h6>
+                  <span>Current Streak</span>
+                </div>
+                <div class="col d-flex flex-column">
+                  <h6>0</h6>
+                  <span>Max Streak</span>
+                </div>
+              </div>
+
+            <div class="col"><h5>GUESS DISTRIBUTION</h5></div>
+            <div class="col">1</div>
+            <div class="col">2</div>
+            <div class="col">3</div>
+            <div class="col">4</div>
+            <div class="col">5</div>
+            <div class="col">6</div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
+            <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+            <button type="button" class="btn btn-primary">Next Level</button>
           </div>
         </div>
       </div>
