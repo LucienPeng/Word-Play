@@ -166,6 +166,50 @@ section .container.keyboard .row .col.backspace {
 #instructionModal h5 {
   text-align: center;
   font-family: DM Sans, sans-serif;
+  font-size: 2rem;
+}
+
+#instructionModal h6 {
+  font-size: 1.5rem;
+}
+
+#instructionModal .column {
+  border: 2px solid #dcdfe4;
+  border-radius: 0.2rem;
+  height: 4rem;
+  width: 4rem;
+  margin: 0.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #6c757d;
+  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#instructionModal .column.correct {
+  border: 2px solid #6c757d;
+  background-color: #07b975;
+  color: #fff;
+}
+
+#instructionModal .column.mi-correct {
+  border: 2px solid #6c757d;
+  background-color: #e07a5f;
+  color: #fff;
+}
+
+#instructionModal .column.wrong {
+  border: 2px solid #6c757d;
+  background-color: #b8b9bb;
+  color: #fff;
 }
 
 #statisticModal h5 {

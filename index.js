@@ -23,21 +23,29 @@ let guessedArrR6 = [];
 
 //題庫
 const questionsDB = [
-  { id: 1, question: "QUOTE" },
-  { id: 2, question: "VOTER" },
-  { id: 3, question: "RELAY" },
-  { id: 4, question: "ZUMBA" },
-  { id: 5, question: "STOCK" },
-  { id: 6, question: "SHAME" },
-  { id: 7, question: "GIANT" },
-  { id: 8, question: "JEWEL" },
-  { id: 9, question: "BLADE" },
-  { id: 10, question: "QUOTA" },
+  { id: 1, question: "WORLD" },
+  { id: 2, question: "FLYER" },
+  { id: 3, question: "MAYBE" },
+  { id: 4, question: "CHOKE" },
+  { id: 5, question: "FLAME" },
+  { id: 6, question: "SLAME" },
+  { id: 7, question: "BLAME" },
+  { id: 8, question: "JUICE" },
+  { id: 9, question: "UNCLE" },
+  { id: 10, question: "UNIFY" },
 ];
 
+//控制Ｍodal開啟時間
 var statistic = new bootstrap.Modal(document.getElementById("statisticModal"), {
   keyboard: false,
 });
+var instructionModal = new bootstrap.Modal(
+  document.getElementById("instructionModal"),
+  {
+    keyboard: false,
+  }
+);
+instructionModal.show();
 
 //自動出題
 let question = "";

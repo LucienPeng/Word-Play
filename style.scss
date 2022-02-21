@@ -152,6 +152,39 @@ section {
   h5 {
     text-align: center;
     font-family: $subtitle-font;
+    font-size: 2rem;
+  }
+  h6 {
+    font-size: 1.5rem;
+  }
+  .column {
+    border: 2px solid #dcdfe4;
+    border-radius: 0.2rem;
+    height: 4rem;
+    width: 4rem;
+    margin: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-size: 3.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .column.correct {
+    border: 2px solid #6c757d;
+    background-color: #07b975;
+    color: #fff;
+  }
+  .column.mi-correct {
+    border: 2px solid #6c757d;
+    background-color: #e07a5f;
+    color: #fff;
+  }
+  .column.wrong {
+    border: 2px solid #6c757d;
+    background-color: #b8b9bb;
+    color: #fff;
   }
 }
 
