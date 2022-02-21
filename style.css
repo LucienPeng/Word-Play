@@ -54,14 +54,14 @@ section .container.guess .row .col.alphabet {
 }
 
 section .container.guess .row .col.alphabet p.guessed-alphabet-style {
-  color: #6c757d;
+  color: #36393a;
   font-size: 3.5rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 section .container.guess .row .col.alphabet.correctBoth {
-  border: 2px solid #6c757d;
+  border: 2px solid #37565a;
   background-color: #07b975;
 }
 
@@ -71,7 +71,7 @@ section .container.guess .row .col.alphabet.correctBoth p {
 }
 
 section .container.guess .row .col.alphabet.correctOne {
-  border: 2px solid #6c757d;
+  border: 2px solid #37565a;
   background-color: #e07a5f;
 }
 
@@ -81,17 +81,7 @@ section .container.guess .row .col.alphabet.correctOne p {
 }
 
 section .container.guess .row .col.alphabet.correctNone {
-  border: 2px solid #6c757d;
-  background-color: #b8b9bb;
-}
-
-section .container.guess .row .col.alphabet.correctNone p {
-  color: #fff;
-  font-size: 4rem;
-}
-
-section .container.guess .row .col.alphabet.correctNone {
-  border: 2px solid #6c757d;
+  border: 2px solid #37565a;
   background-color: #b8b9bb;
 }
 
@@ -188,32 +178,33 @@ section .container.keyboard .row .col.backspace {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #6c757d;
+  color: #36393a;
   font-size: 3.5rem;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 #instructionModal .column.correct {
-  border: 2px solid #6c757d;
+  border: 2px sooid #36393a;
   background-color: #07b975;
   color: #fff;
 }
 
 #instructionModal .column.mi-correct {
-  border: 2px solid #6c757d;
+  border: 2px sooid #36393a;
   background-color: #e07a5f;
   color: #fff;
 }
 
 #instructionModal .column.wrong {
-  border: 2px solid #6c757d;
+  border: 2px sooid #36393a;
   background-color: #b8b9bb;
   color: #fff;
 }
 
 #statisticModal h5 {
   text-align: center;
+  font-size: 2rem;
   font-family: DM Sans, sans-serif;
 }
 

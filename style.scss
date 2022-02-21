@@ -1,5 +1,9 @@
 $title-font: Lobster Two, cursive;
 $subtitle-font: DM Sans, sans-serif;
+$correctBoth-color: #07b975;
+$correctOne-color: #e07a5f;
+$correctNone-color: #b8b9bb;
+$column-color: #36393a;
 
 body {
   font-size: 16px;
@@ -44,15 +48,15 @@ section {
         align-items: center;
         justify-content: center;
         p.guessed-alphabet-style {
-          color: #6c757d;
+          color: $column-color;
           font-size: 3.5rem;
           margin-top: 0;
           margin-bottom: 0;
         }
       }
       .col.alphabet.correctBoth {
-        border: 2px solid #6c757d;
-        background-color: #07b975;
+        border: 2px solid #37565a;
+        background-color: $correctBoth-color;
 
         p {
           color: #fff;
@@ -60,25 +64,16 @@ section {
         }
       }
       .col.alphabet.correctOne {
-        border: 2px solid #6c757d;
-        background-color: #e07a5f;
+        border: 2px solid #37565a;
+        background-color: $correctOne-color;
         p {
           color: #fff;
           font-size: 4rem;
         }
       }
       .col.alphabet.correctNone {
-        border: 2px solid #6c757d;
-        background-color: #b8b9bb;
-        p {
-          color: #fff;
-          font-size: 4rem;
-        }
-      }
-      .col.alphabet.correctNone {
-        border: 2px solid #6c757d;
-        background-color: #b8b9bb;
-
+        border: 2px solid #37565a;
+        background-color: $correctNone-color;
         p {
           color: #fff;
           font-size: 4rem;
@@ -89,7 +84,7 @@ section {
   .container.keyboard {
     .row {
       .col {
-        background-color: #b8b9bb;
+        background-color: $correctNone-color;
         color: #fff;
         height: 3rem;
         width: 3rem;
@@ -166,24 +161,24 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6c757d;
+    color: $column-color;
     font-size: 3.5rem;
     margin-top: 0;
     margin-bottom: 0;
   }
   .column.correct {
-    border: 2px solid #6c757d;
-    background-color: #07b975;
+    border: 2px sooid $column-color;
+    background-color: $correctBoth-color;
     color: #fff;
   }
   .column.mi-correct {
-    border: 2px solid #6c757d;
-    background-color: #e07a5f;
+    border: 2px sooid $column-color;
+    background-color: $correctOne-color;
     color: #fff;
   }
   .column.wrong {
-    border: 2px solid #6c757d;
-    background-color: #b8b9bb;
+    border: 2px sooid $column-color;
+    background-color: $correctNone-color;
     color: #fff;
   }
 }
@@ -191,6 +186,7 @@ section {
 #statisticModal {
   h5 {
     text-align: center;
+    font-size: 2rem;
     font-family: $subtitle-font;
   }
   .records {
