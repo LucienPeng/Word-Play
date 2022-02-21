@@ -143,7 +143,7 @@ function Round1() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR1[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -156,7 +156,7 @@ function Round1() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR1[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
@@ -286,7 +286,7 @@ function Round2() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR2[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -299,7 +299,7 @@ function Round2() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR2[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
@@ -428,7 +428,7 @@ function Round3() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR3[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -441,7 +441,7 @@ function Round3() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR3[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
@@ -571,7 +571,7 @@ function Round4() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR4[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -584,7 +584,7 @@ function Round4() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR4[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
@@ -714,7 +714,7 @@ function Round5() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR5[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -727,7 +727,7 @@ function Round5() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR5[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
@@ -859,7 +859,7 @@ function Round6() {
               // 更改字母鍵盤顏色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR6[i] === keyboard[j].childNodes[0].innerText) {
-                  keyboard[j].style.backgroundColor = "$correctBoth-color";
+                  keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
               //判斷作答是否只有位置正確，若是則給予橘色背景。
@@ -872,7 +872,7 @@ function Round6() {
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR6[i] === keyboard[k].childNodes[0].innerText) {
-                  keyboard[k].style.backgroundColor = "$correctOne-color";
+                  keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
               //判斷作答是否完全不吻合，若是則給予灰色背景。
