@@ -28,9 +28,9 @@ const questionsDB = [
   { id: 3, question: "MAYBE" },
   { id: 4, question: "CHOKE" },
   { id: 5, question: "FLAME" },
-  { id: 6, question: "SLAME" },
+  { id: 6, question: "QUOTA" },
   { id: 7, question: "BLAME" },
-  { id: 8, question: "JUICE" },
+  { id: 8, question: "NIGHT" },
   { id: 9, question: "UNCLE" },
   { id: 10, question: "UNIFY" },
 ];
@@ -904,14 +904,12 @@ function Round6() {
           //按下確定後，取消第一回合的ENTER/BACKSPACE監聽，並啟動第二回合監聽。
           enterBtn.removeEventListener("click", enterR6);
           deleteBtn.removeEventListener("click", deleteR6);
-          //  判斷勝利與否
-          function isWin() {
-            if (question === guessedArrR6.join("")) {
-              setTimeout(() => {
-                statistic.show();
-              }, 1500);
-              return;
-            }
+        }
+        //  判斷勝利與否
+        function isWin() {
+          if (question === guessedArrR6.join("")) {
+            endingAnimation();
+            return;
           }
         }
       }
