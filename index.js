@@ -75,9 +75,6 @@ function Round1() {
     keyboard[i].addEventListener("click", inputR1);
 
     function inputR1() {
-      //每輸入一次則COUNTER+1
-      counter1 += 1;
-
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -89,8 +86,11 @@ function Round1() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR1.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter1 < 5) showGuess(counter1);
-      else {
+
+      if (counter1 < 4) {
+        counter1 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter1);
+      } else {
         return;
       }
     }
@@ -220,9 +220,6 @@ function Round2() {
     keyboard[i].addEventListener("click", inputR2);
 
     function inputR2() {
-      //每輸入一次則COUNTER+1
-      counter2 += 1;
-
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -234,8 +231,10 @@ function Round2() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR2.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter2 < 5) showGuess(counter2);
-      else {
+      if (counter2 < 4) {
+        counter2 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter2);
+      } else {
         return;
       }
     }
@@ -363,9 +362,6 @@ function Round3() {
     keyboard[i].addEventListener("click", inputR3);
 
     function inputR3() {
-      //每輸入一次則COUNTER+1
-      counter3 += 1;
-
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -377,8 +373,11 @@ function Round3() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR3.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter3 < 5) showGuess(counter3);
-      else {
+      if (counter3 < 4) {
+        counter3 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter3);
+      } else {
+        return;
       }
     }
   }
@@ -505,9 +504,6 @@ function Round4() {
     keyboard[i].addEventListener("click", inputR4);
 
     function inputR4() {
-      //每輸入一次則COUNTER+1
-      counter4 += 1;
-
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -519,8 +515,10 @@ function Round4() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR4.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter4 < 5) showGuess(counter4);
-      else {
+      if (counter4 < 4) {
+        counter4 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter4);
+      } else {
         return;
       }
     }
@@ -640,17 +638,11 @@ function Round4() {
 
 //Round5
 function Round5() {
-  // 用來計算已輸入字母個數
-  let counter5 = -1;
-
   //用迴圈一次監聽全部的虛擬鍵盤並取值
   for (let i = 0; i < keyboard.length; i++) {
     keyboard[i].addEventListener("click", inputR5);
 
     function inputR5() {
-      //每輸入一次則COUNTER+1
-      counter5 += 1;
-
       //若輸入未超過5個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -662,8 +654,10 @@ function Round5() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR5.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter5 < 5) showGuess(counter5);
-      else {
+      if (counter5 < 4) {
+        counter5 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter5);
+      } else {
         return;
       }
     }
@@ -791,9 +785,6 @@ function Round6() {
     keyboard[i].addEventListener("click", inputR6);
 
     function inputR6() {
-      //每輸入一次則COUNTER+1
-      counter6 += 1;
-
       //若輸入未超過6個字母，則每次將虛擬鍵盤取出的值渲然於畫面作答區，並將作答塞入陣列做後續操作。
 
       let showGuess = (guessTimes) => {
@@ -805,8 +796,10 @@ function Round6() {
           keyboard[i].childNodes[0].innerText;
         guessedArrR6.push(keyboard[i].childNodes[0].innerText);
       };
-      if (counter6 < 6) showGuess(counter6);
-      else {
+      if (counter6 < 4) {
+        counter6 += 1; //每輸入一次則COUNTER+1
+        showGuess(counter6);
+      } else {
         return;
       }
     }
