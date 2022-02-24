@@ -6,6 +6,9 @@ const deleteBtn = document.querySelector(".backspace");
 //宣告作答提示
 const note = document.querySelector(".note");
 
+//宣告統計Ｍodal
+const records = document.querySelector(".records");
+
 //將鍵盤輸入值填入作答空格
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
 const guessAnswerR2 = document.querySelectorAll(".guessed-alphabetR2");
@@ -48,7 +51,7 @@ var instructionModal = new bootstrap.Modal(
 );
 
 //自動出題
-let question = "";
+let question = questionsDB[3].question;
 function randomQuestion() {
   let random = Math.floor(Math.random() * 10) + 1;
 
@@ -59,10 +62,12 @@ function randomQuestion() {
   }
   return question;
 }
-console.log(randomQuestion());
+//console.log(randomQuestion());
 
 instructionModal.show();
 let verification = "";
+let winTimes = 0;
+let lossTimes = 0;
 
 //Round1
 Round1();
@@ -134,35 +139,38 @@ function Round1() {
           for (let i = 0; i < guessedArrR1.length; i++) {
             //判斷作答是否完全正確，若是則給予綠色背景。
             if (guessedArrR1[i] === question[i]) {
-              guessAnswerR1[i].parentElement.classList.add("correctBoth");
               guessAnswerR1[i].parentElement.classList.add(
+                "correctBoth",
                 "animate__animated",
                 "animate__flipInY"
               );
 
-              // 更改字母鍵盤顏色
+              // 更改字母鍵盤顏色為綠色
               for (let j = 0; j < keyboard.length; j++) {
                 if (guessedArrR1[i] === keyboard[j].childNodes[0].innerText) {
                   keyboard[j].style.backgroundColor = "#07b975";
                 }
               }
+
               //判斷作答是否只有位置正確，若是則給予橘色背景。
             } else if (question.indexOf(guessedArrR1[i]) !== -1) {
-              guessAnswerR1[i].parentElement.classList.add("correctOne");
               guessAnswerR1[i].parentElement.classList.add(
+                "correctOne",
                 "animate__animated",
                 "animate__flipInY"
               );
+
               // 更改字母鍵盤顏色
               for (let k = 0; k < keyboard.length; k++) {
                 if (guessedArrR1[i] === keyboard[k].childNodes[0].innerText) {
                   keyboard[k].style.backgroundColor = "#e07a5f";
                 }
               }
+
               //判斷作答是否完全不吻合，若是則給予灰色背景。
             } else if (question.indexOf(guessedArrR1[i]) === -1) {
-              guessAnswerR1[i].parentElement.classList.add("correctNone");
               guessAnswerR1[i].parentElement.classList.add(
+                "correctNone",
                 "animate__animated",
                 "animate__flipInY"
               );
@@ -172,6 +180,7 @@ function Round1() {
                 }
               }
             }
+
             //按下確定後，取消第一回合的虛擬鍵盤監聽。
             keyboard[i].removeEventListener("click", inputR1);
             //  作答正確動畫
@@ -190,6 +199,7 @@ function Round1() {
             //  判斷勝利與否
             if (question === guessedArrR1.join("")) {
               endingAnimation();
+              statistics();
               return;
             } else Round2();
           }
@@ -211,6 +221,7 @@ function Round1() {
 }
 
 //Round2
+
 function Round2() {
   // 用來計算已輸入字母個數
   let counter2 = -1;
@@ -332,6 +343,7 @@ function Round2() {
             //  判斷勝利與否
             if (question === guessedArrR2.join("")) {
               endingAnimation();
+              statistics();
               return;
             } else Round3();
           }
@@ -474,6 +486,8 @@ function Round3() {
             //  判斷勝利與否
             if (question === guessedArrR3.join("")) {
               endingAnimation();
+              statistics();
+
               return;
             } else Round4();
           }
@@ -616,6 +630,8 @@ function Round4() {
             //  判斷勝利與否
             if (question === guessedArrR4.join("")) {
               endingAnimation();
+              statistics();
+
               return;
             } else Round5();
           }
@@ -657,6 +673,7 @@ function Round5() {
       if (counter5 < 4) {
         counter5 += 1; //每輸入一次則COUNTER+1
         showGuess(counter5);
+        statistics();
       } else {
         return;
       }
@@ -755,6 +772,7 @@ function Round5() {
             //  判斷勝利與否
             if (question === guessedArrR5.join("")) {
               endingAnimation();
+              statistics();
               return;
             } else Round6();
           }
@@ -883,14 +901,6 @@ function Round6() {
             }
             //按下確定後，取消第一回合的虛擬鍵盤監聽。
             keyboard[i].removeEventListener("click", inputR6);
-            //  作答正確動畫
-            if (question === guessedArrR6.join("")) {
-              endingAnimation();
-            } else {
-              note.innerText = question;
-              note.style.display = "block";
-              return;
-            }
           }
         }
         if (verification === verification && verification.length === 5) {
@@ -902,7 +912,11 @@ function Round6() {
         function isWin() {
           if (question === guessedArrR6.join("")) {
             endingAnimation();
+            statistics();
             return;
+          } else {
+            wrongEndingAnimation();
+            statistics();
           }
         }
       }
@@ -921,14 +935,76 @@ function Round6() {
   }
 }
 
-//結束時的動畫提示，並銜接統計數據MODAL
+//結束時的正確動畫提示，並銜接統計數據MODAL
 let endingAnimation = () => {
   note.innerText = "WONDERFUL!";
   note.classList.add("animate__animated", "animate__animate__rubberBand");
   note.style.width = "10rem";
-  note.style.backgroundColor = "$correctBoth-color";
+  note.style.backgroundColor = "#07b975";
   note.style.display = "block";
+  winTimes = getCookie("winTimes");
+  winTimes = winTimes + 1;
+  setCookie("winTimes", winTimes);
   setTimeout(() => {
     statistic.show();
   }, 2000);
 };
+
+//結束時的錯誤動畫提示，並銜接統計數據MODAL
+let wrongEndingAnimation = () => {
+  note.innerText = question;
+  note.classList.add("animate__animated", "animate__animate__rubberBand");
+  note.style.width = "10rem";
+  note.style.backgroundColor = "#db458b";
+  note.style.display = "block";
+  lossTimes = getCookie("lossTimes");
+  lossTimes += 1;
+  setCookie("lossTimes", lossTimes);
+  setTimeout(() => {
+    statistic.show();
+  }, 2000);
+};
+
+let statistics = () => {
+  playTimes = getCookie("playTimes");
+  playTimes = playTimes + 1;
+  setCookie("playTimes", playTimes);
+  //Win %
+  let percentage = (getCookie("lossTimes") / getCookie("winTimes")) * 100;
+  setCookie("percentage", percentage);
+
+  // RENDER
+  records.children[0].children[0].innerText = getCookie("playTimes");
+  records.children[1].children[0].innerText = getCookie("winTimes");
+  records.children[2].children[0].innerText = getCookie("lossTimes");
+  records.children[3].children[0].innerText = getCookie("percentage");
+};
+
+//Cookies初始化
+if (
+  isNaN(getCookie("playTimes")) &&
+  isNaN(getCookie("winTimes")) &&
+  isNaN(getCookie("lossTimes"))
+) {
+  setCookie("playTimes", 0);
+  setCookie("winTimes", 0);
+  setCookie("lossTimes", 0);
+  setCookie("percentage", 0);
+}
+
+records.children[0].children[0].innerText = getCookie("playTimes");
+records.children[1].children[0].innerText = getCookie("winTimes");
+records.children[2].children[0].innerText = getCookie("lossTimes");
+records.children[3].children[0].innerText = getCookie("percentage");
+
+//設定Cookies
+function setCookie(cname, cvalue) {
+  document.cookie = cname + "=" + cvalue + ";";
+}
+
+//取得Cookies
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return Number(parts.pop().split(";").shift());
+}
