@@ -8,6 +8,7 @@ const note = document.querySelector(".note");
 
 //宣告統計Ｍodal
 const records = document.querySelector(".records");
+const chartBar = document.querySelector("#chart");
 
 //將鍵盤輸入值填入作答空格
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
@@ -68,6 +69,7 @@ instructionModal.show();
 let verification = "";
 let winTimes = 0;
 let lossTimes = 0;
+let wins = 0;
 
 //Round1
 Round1();
@@ -198,8 +200,9 @@ function Round1() {
             deleteBtn.removeEventListener("click", deleteR1);
             //  判斷勝利與否
             if (question === guessedArrR1.join("")) {
-              endingAnimation();
+              endingAnimation(0);
               statistics();
+              chartCookie(0);
               return;
             } else Round2();
           }
@@ -344,6 +347,7 @@ function Round2() {
             if (question === guessedArrR2.join("")) {
               endingAnimation();
               statistics();
+              chartCookie(1);
               return;
             } else Round3();
           }
@@ -487,7 +491,7 @@ function Round3() {
             if (question === guessedArrR3.join("")) {
               endingAnimation();
               statistics();
-
+              chartCookie(2);
               return;
             } else Round4();
           }
@@ -631,7 +635,7 @@ function Round4() {
             if (question === guessedArrR4.join("")) {
               endingAnimation();
               statistics();
-
+              chartCookie(3);
               return;
             } else Round5();
           }
@@ -773,6 +777,7 @@ function Round5() {
             if (question === guessedArrR5.join("")) {
               endingAnimation();
               statistics();
+              chartCookie(4);
               return;
             } else Round6();
           }
@@ -913,6 +918,7 @@ function Round6() {
           if (question === guessedArrR6.join("")) {
             endingAnimation();
             statistics();
+            chartCookie(5);
             return;
           } else {
             wrongEndingAnimation();
@@ -936,7 +942,7 @@ function Round6() {
 }
 
 //結束時的正確動畫提示，並銜接統計數據MODAL
-let endingAnimation = () => {
+let endingAnimation = (n) => {
   note.innerText = "WONDERFUL!";
   note.classList.add("animate__animated", "animate__animate__rubberBand");
   note.style.width = "10rem";
@@ -945,6 +951,8 @@ let endingAnimation = () => {
   winTimes = getCookie("winTimes");
   winTimes = winTimes + 1;
   setCookie("winTimes", winTimes);
+
+  //
   setTimeout(() => {
     statistic.show();
   }, 2000);
@@ -966,8 +974,7 @@ let wrongEndingAnimation = () => {
 };
 
 let statistics = () => {
-  playTimes = getCookie("playTimes");
-  playTimes = playTimes + 1;
+  playTimes = getCookie("playTimes") + 1;
   setCookie("playTimes", playTimes);
   //Win %
   let percentage = (getCookie("lossTimes") / getCookie("winTimes")) * 100;
@@ -980,27 +987,39 @@ let statistics = () => {
   records.children[3].children[0].innerText = getCookie("percentage");
 };
 
-//Cookies初始化
-if (
-  isNaN(getCookie("playTimes")) &&
-  isNaN(getCookie("winTimes")) &&
-  isNaN(getCookie("lossTimes"))
-) {
-  setCookie("playTimes", 0);
-  setCookie("winTimes", 0);
-  setCookie("lossTimes", 0);
-  setCookie("percentage", 0);
+let rowWins = [];
+for (let i = 0; i < 6; i++) {
+  rowWins.push(getCookie(`rowWins${i}`));
 }
 
-records.children[0].children[0].innerText = getCookie("playTimes");
-records.children[1].children[0].innerText = getCookie("winTimes");
-records.children[2].children[0].innerText = getCookie("lossTimes");
-records.children[3].children[0].innerText = getCookie("percentage");
+//Cookies初始化
+(function cookieInit() {
+  if (isNaN(getCookie("playTimes"))) {
+    setCookie("playTimes", 0);
+    setCookie("winTimes", 0);
+    setCookie("lossTimes", 0);
+    setCookie("percentage", 0);
+    for (let i = 0; i < 6; i++) {
+      setCookie(`rowWins${i}`, 0);
+    }
+    records.children[0].children[0].innerText = getCookie("playTimes");
+    records.children[1].children[0].innerText = getCookie("winTimes");
+    records.children[2].children[0].innerText = getCookie("lossTimes");
+    records.children[3].children[0].innerText = getCookie("percentage");
+  }
+  console.log(document.cookie);
+})();
 
 //設定Cookies
 function setCookie(cname, cvalue) {
   document.cookie = cname + "=" + cvalue + ";";
 }
+
+let chartCookie = (n) => {
+  wins = getCookie(`rowWins${n}`) + 1;
+  setCookie(`rowWins${n}`, wins);
+  rowWins[n] = getCookie(`rowWins${n}`);
+};
 
 //取得Cookies
 function getCookie(name) {
@@ -1008,3 +1027,44 @@ function getCookie(name) {
   const parts = value.split(`; ${name}=`);
   if (parts.length === 2) return Number(parts.pop().split(";").shift());
 }
+
+//圖表
+const dataBar = {
+  labels: [1, 2, 3, 4, 5, 6],
+  datasets: [
+    {
+      data: rowWins,
+      backgroundColor: ["#07b975"],
+      borderColor: ["#ffffff"],
+      borderWidth: 2,
+      borderRadius: 2,
+    },
+  ],
+};
+
+const configBar = {
+  type: "bar",
+  data: dataBar,
+  options: {
+    plugins: {
+      legend: {
+        display: true,
+
+        title: {
+          display: true,
+        },
+        labels: {},
+      },
+    },
+    indexAxis: "y",
+    scales: {
+      y: {
+        grid: {
+          display: false,
+        },
+        beginAtZero: false,
+      },
+    },
+  },
+};
+const chart = new Chart(chartBar, configBar);
