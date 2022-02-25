@@ -658,6 +658,8 @@ function Round4() {
 
 //Round5
 function Round5() {
+  // 用來計算已輸入字母個數
+  let counter5 = -1;
   //用迴圈一次監聽全部的虛擬鍵盤並取值
   for (let i = 0; i < keyboard.length; i++) {
     keyboard[i].addEventListener("click", inputR5);
@@ -978,7 +980,7 @@ let statistics = () => {
   setCookie("playTimes", playTimes);
   //Win %
   let percentage = (getCookie("lossTimes") / getCookie("winTimes")) * 100;
-  setCookie("percentage", percentage);
+  setCookie("percentage", Math.floor(percentage));
 
   // RENDER
   records.children[0].children[0].innerText = getCookie("playTimes");
@@ -1002,12 +1004,11 @@ for (let i = 0; i < 6; i++) {
     for (let i = 0; i < 6; i++) {
       setCookie(`rowWins${i}`, 0);
     }
-    records.children[0].children[0].innerText = getCookie("playTimes");
-    records.children[1].children[0].innerText = getCookie("winTimes");
-    records.children[2].children[0].innerText = getCookie("lossTimes");
-    records.children[3].children[0].innerText = getCookie("percentage");
   }
-  console.log(document.cookie);
+  records.children[0].children[0].innerText = getCookie("playTimes");
+  records.children[1].children[0].innerText = getCookie("winTimes");
+  records.children[2].children[0].innerText = getCookie("lossTimes");
+  records.children[3].children[0].innerText = getCookie("percentage");
 })();
 
 //設定Cookies
@@ -1033,6 +1034,7 @@ const dataBar = {
   labels: [1, 2, 3, 4, 5, 6],
   datasets: [
     {
+      label: "Played",
       data: rowWins,
       backgroundColor: ["#07b975"],
       borderColor: ["#ffffff"],
@@ -1046,23 +1048,25 @@ const configBar = {
   type: "bar",
   data: dataBar,
   options: {
-    plugins: {
-      legend: {
-        display: true,
-
-        title: {
-          display: true,
-        },
-        labels: {},
-      },
+    legend: {
+      display: false,
     },
+
     indexAxis: "y",
     scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1,
+        },
+      },
       y: {
         grid: {
           display: false,
         },
-        beginAtZero: false,
       },
     },
   },
