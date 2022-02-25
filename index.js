@@ -31,11 +31,11 @@ const questionsDB = [
   { id: 2, question: "FLYER" },
   { id: 3, question: "MAYBE" },
   { id: 4, question: "CHOKE" },
-  { id: 5, question: "FLAME" },
-  { id: 6, question: "QUOTA" },
-  { id: 7, question: "BLAME" },
+  { id: 5, question: "FLOAT" },
+  { id: 6, question: "QUOTE" },
+  { id: 7, question: "BUILD" },
   { id: 8, question: "NIGHT" },
-  { id: 9, question: "UNCLE" },
+  { id: 9, question: "SUPER" },
   { id: 10, question: "UNIFY" },
 ];
 
@@ -52,7 +52,7 @@ var instructionModal = new bootstrap.Modal(
 );
 
 //自動出題
-let question = questionsDB[3].question;
+let question = "";
 function randomQuestion() {
   let random = Math.floor(Math.random() * 10) + 1;
 
@@ -63,7 +63,7 @@ function randomQuestion() {
   }
   return question;
 }
-//console.log(randomQuestion());
+console.log(randomQuestion());
 
 instructionModal.show();
 let verification = "";
