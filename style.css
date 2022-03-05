@@ -82,7 +82,7 @@ section .container.guess .row .col.alphabet.correctOne p {
 
 section .container.guess .row .col.alphabet.correctNone {
   border: 2px solid #37565a;
-  background-color: #b8b9bb;
+  background-color: #b9babc;
 }
 
 section .container.guess .row .col.alphabet.correctNone p {
@@ -91,7 +91,7 @@ section .container.guess .row .col.alphabet.correctNone p {
 }
 
 section .container.keyboard .row .col {
-  background-color: #b8b9bb;
+  background-color: #b9babc;
   color: #fff;
   height: 3rem;
   width: 3rem;
@@ -153,6 +153,12 @@ section .container.keyboard .row .col.backspace {
   }
 }
 
+.rank h5 {
+  text-align: center;
+  font-family: DM Sans, sans-serif;
+  font-size: 2rem;
+}
+
 #instructionModal h5 {
   text-align: center;
   font-family: DM Sans, sans-serif;
@@ -161,6 +167,10 @@ section .container.keyboard .row .col.backspace {
 
 #instructionModal h6 {
   font-size: 1.5rem;
+}
+
+#instructionModal .demo-section {
+  width: 50%;
 }
 
 #instructionModal .column {
@@ -198,7 +208,7 @@ section .container.keyboard .row .col.backspace {
 
 #instructionModal .column.wrong {
   border: 2px sooid #36393a;
-  background-color: #b8b9bb;
+  background-color: #b9babc;
   color: #fff;
 }
 

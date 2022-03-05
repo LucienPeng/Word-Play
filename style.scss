@@ -141,6 +141,15 @@ section {
   }
 }
 
+//Rank Chart
+.rank {
+  h5 {
+    text-align: center;
+    font-family: $subtitle-font;
+    font-size: 2rem;
+  }
+}
+
 //Modals
 
 #instructionModal {
@@ -152,6 +161,11 @@ section {
   h6 {
     font-size: 1.5rem;
   }
+
+  .demo-section {
+    width: 50%;
+  }
+
   .column {
     border: 2px solid #dcdfe4;
     border-radius: 0.2rem;

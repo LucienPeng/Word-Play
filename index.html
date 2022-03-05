@@ -21,21 +21,25 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-          <a class="navbar-brand" href="#"><h1 >Word Play</h1></a>
+          <a class="navbar-brand" href="index.html"><h1 >Word Play</h1></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#"><i data-bs-toggle="modal" data-bs-target="#instructionModal" class="bi bi-question-circle-fill"></i></a>
+                <a class="nav-link" title="Instruction" aria-current="page" href="#"><i data-bs-toggle="modal" data-bs-target="#instructionModal" class="bi bi-question-circle-fill"></i></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i data-bs-toggle="modal" data-bs-target="#statisticModal" class="bi bi-pie-chart-fill"></i>
+                <a class="nav-link" title="Statistic" href="#"><i data-bs-toggle="modal" data-bs-target="#statisticModal" class="bi bi-pie-chart-fill"></i>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><i class="bi bi-gear-fill"></i>
+                <a class="nav-link" title="Rank" href="rank.html"><i class="bi bi-bar-chart-line-fill"></i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" title="Setting" href="#"><i class="bi bi-gear-fill"></i>
                 </a>
               </li>
             </ul>
@@ -143,15 +147,15 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <h5 class="mb-3">How To Play</h5>
-            <div class="container-fluid mb-3">
+            <div class="container-fluid mb-3 d-flex flex-column align-items-center justify-content-end instruction">
               <div class="row">
                 <div class="col mb-3">Guess the rirht word in only six tries!<br>
                   Each guess must be a valid five-letter word. Hit the enter button to submit.<br>
                   After each guess, the color of the tiles will change to show how close your guess was to the word.</div>
               </div>
               <h6 class="mb-3">Examples</h6>
-              <div class="col mb-2">The letter O is in the word and in the correct spot.
-                <div class="row">
+              <div class="col mb-2 demo-section">The letter O is in the word and in the correct spot.
+                <div class="row ">
                   <div class="col-1 column">W</div>
                   <div class="col-1 column correct animate__animated animate__flip">O</div>
                   <div class="col-1 column">R</div>
@@ -159,8 +163,8 @@
                   <div class="col-1 column">D</div>
                 </div>
               </div>
-              <div class="col mb-2">The letter R is in the word but in the wrong spot.
-                <div class="row">
+              <div class="col mb-2 demo-section">The letter R is in the word but in the wrong spot.
+                <div class="row ">
                   <div class="col-1 column">W</div>
                   <div class="col-1 column">I</div>
                   <div class="col-1 column mi-correct animate__animated animate__flip">R</div>
@@ -168,8 +172,8 @@
                   <div class="col-1 column">D</div>
                 </div>
             </div>
-            <div class="col mb-2">The letter M is not in the word in any spot.
-              <div class="row">
+            <div class="col mb-2 demo-section">The letter M is not in the word in any spot.
+              <div class="row ">
                   <div class="col-1 column">F</div>
                   <div class="col-1 column">L</div>
                   <div class="col-1 column">A</div>

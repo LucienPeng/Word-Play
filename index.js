@@ -3,6 +3,7 @@ import { endingAnimation } from "./modules/endingAnimation.js";
 import { setCookie, getCookie, cookieInit } from "./modules/cookies.js";
 import { statistic, instructionModal } from "./modules/modals.js";
 import { statistics, chartCookie, rowWins } from "./modules/statistics.js";
+import { playersArr, scoresArr} from "./modules/rank.js";
 
 // 宣告鍵盤按鈕
 const keyboard = document.querySelectorAll(".keyboard .alphabet");
@@ -15,6 +16,7 @@ const note = document.querySelector(".note");
 
 //宣告統計Ｍodal
 const chartBar = document.querySelector("#chart");
+const chartBarRank = document.querySelector("#rankChart");
 
 //將鍵盤輸入值填入作答空格
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
@@ -87,7 +89,50 @@ const configBar = {
 };
 const chart = new Chart(chartBar, configBar);
 
-//Round1();
+const dataBarRank = {
+  labels: playersArr,
+  datasets: [
+    {
+      label: "Score",
+      data: scoresArr,
+      backgroundColor: ["#99c530"],
+      borderColor: ["#ffffff"],
+      borderWidth: 2,
+      borderRadius: 2,
+    },
+  ],
+};
+
+const configBarRank = {
+  type: "bar",
+  data: dataBarRank,
+  options: {
+    legend: {
+      display: false,
+    },
+
+    indexAxis: "y",
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+  },
+};
+const chartRank = new Chart(chartBarRank, configBarRank);
+
+Round1();
 function Round1() {
   let counter = -1;
 
@@ -210,7 +255,6 @@ function Round1() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR1.pop();
     guessAnswerR1[counter].innerText = "";
@@ -747,7 +791,7 @@ function Round5() {
   }
 }
 
-Round6();
+//Round6();
 function Round6() {
   let counter = -1;
 
