@@ -13,4 +13,9 @@ const instructionModal = new bootstrap.Modal(
   }
 );
 
-export { statistic, instructionModal };
+const loggingModal = new bootstrap.Modal(document.getElementById("logging"), {
+  keyboard: false,
+});
+
+
+export { statistic, instructionModal, loggingModal };

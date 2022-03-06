@@ -153,12 +153,6 @@ section .container.keyboard .row .col.backspace {
   }
 }
 
-.rank h5 {
-  text-align: center;
-  font-family: DM Sans, sans-serif;
-  font-size: 2rem;
-}
-
 #instructionModal h5 {
   text-align: center;
   font-family: DM Sans, sans-serif;
@@ -228,5 +222,21 @@ section .container.keyboard .row .col.backspace {
 
 #statisticModal .records span {
   display: block;
+}
+
+#logging h5 {
+  text-align: center;
+  font-size: 2rem;
+  font-family: DM Sans, sans-serif;
+}
+
+#logging input {
+  width: 50%;
+}
+
+#rankModal h5 {
+  text-align: center;
+  font-family: DM Sans, sans-serif;
+  font-size: 2rem;
 }
 /*# sourceMappingURL=style.css.map */

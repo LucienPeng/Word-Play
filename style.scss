@@ -141,15 +141,6 @@ section {
   }
 }
 
-//Rank Chart
-.rank {
-  h5 {
-    text-align: center;
-    font-family: $subtitle-font;
-    font-size: 2rem;
-  }
-}
-
 //Modals
 
 #instructionModal {
@@ -211,5 +202,24 @@ section {
     span {
       display: block;
     }
+  }
+}
+
+#logging {
+  h5 {
+    text-align: center;
+    font-size: 2rem;
+    font-family: $subtitle-font;
+  }
+  input {
+    width: 50%;
+  }
+}
+
+#rankModal {
+  h5 {
+    text-align: center;
+    font-family: $subtitle-font;
+    font-size: 2rem;
   }
 }

@@ -4,12 +4,8 @@ const records = document.querySelector(".records");
 
 let winTimes = 0;
 let wins = 0;
-let playTimes = 0;
 
 let statistics = () => {
-  console.log(playTimes);
-  playTimes = getCookie("playTimes") + 1;
-  setCookie("playTimes", playTimes);
   //Win %
   let percentage =
     (getCookie("winTimes") / (getCookie("lossTimes") + getCookie("winTimes"))) *
@@ -23,6 +19,8 @@ let statistics = () => {
   records.children[3].children[0].innerText = getCookie("percentage");
 };
 
+//chart
+
 let rowWin = [];
 
 let rowWins = () => {
@@ -33,7 +31,6 @@ let rowWins = () => {
 };
 
 let chartCookie = (n) => {
-  console.log(n);
   wins = getCookie(`rowWins${n}`) + 1;
   setCookie(`rowWins${n}`, wins);
   rowWins[n] = getCookie(`rowWins${n}`);

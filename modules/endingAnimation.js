@@ -1,10 +1,12 @@
 import { setCookie, getCookie } from "./cookies.js";
 import { statistic } from "./modals.js";
+import { getPlayer, changeRank } from "./rank.js";
 
 //宣告作答提示
 const note = document.querySelector(".note");
 //統計遊玩次數
 let winTimes = 0;
+let playTimes = 0;
 
 //結束時的正確動畫提示，並銜接統計數據MODAL
 export let endingAnimation = (n) => {
@@ -16,8 +18,28 @@ export let endingAnimation = (n) => {
   winTimes = getCookie("winTimes");
   winTimes = winTimes + 1;
   setCookie("winTimes", winTimes);
+  dataChange(playerUpdate.nom);
+  playTimes = getCookie("playTimes") + 1;
+  setCookie("playTimes", playTimes);
   setTimeout(() => {
     statistic.show();
   }, 2000);
 };
 
+//更改分數
+//抓取玩家姓名
+const loggingBtn = document.querySelector("#loggingBtn");
+const loggingInput = document.querySelector("#loggingInput");
+
+let playerUpdate = {
+  nom: "",
+  score: 0,
+};
+loggingBtn.addEventListener("click", (e) => {
+  playerUpdate.nom = loggingInput.value;
+});
+
+async function dataChange(name) {
+  let data = await getPlayer(name);
+  await changeRank(data[0].nom, data[0].score + 1);
+}

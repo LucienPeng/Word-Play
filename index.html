@@ -35,7 +35,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" title="Rank" href="rank.html"><i class="bi bi-bar-chart-line-fill"></i>
+                <a class="nav-link" title="Rank" href="#"><i data-bs-toggle="modal" data-bs-target="#rankModal"  class="bi bi-bar-chart-line-fill"></i>
                 </a>
               </li>
               <li class="nav-item">
@@ -188,9 +188,9 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
 
-    <!-- Modal -->
+    <!-- Statistic Modal -->
     <div class="modal fade" id="statisticModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="statisticModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -231,12 +231,59 @@
             </div>
           </div>
           <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" onClick="window.location.reload()">Next Level</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!--Logging Modal -->
+    <div class="modal fade" id="logging" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="loggingModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <div class="row d-flex justify-content-end">
+              <div class="col col-1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+            </div>
+              <div class="row d-felx flex-column align-items-center justify-content-center">
+                <h5 class="mb-4">Please enter your name :</h5>
+                <input id="loggingInput" class="mb-2" type="text" placeholder="Player">
+              </div>
+
+
+          </div>
+          <div class="modal-footer">
             <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-            <button type="button" class="btn btn-primary" onClick="window.location.reload()">Next Level</button>
+            <button type="button" id="loggingBtn" class="btn btn-primary" data-bs-dismiss="modal">Enter</button>
           </div>
         </div>
       </div>
     </div>
+
+     <!--Rank Mofdal -->
+     <div class="modal fade" id="rankModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="rankModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <div class="row d-flex justify-content-end">
+              <div class="col col-1">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <h5 class="mt-2 ">Players Rank</h5>
+              <canvas id="rankChart"></canvas>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+          
 
 
       

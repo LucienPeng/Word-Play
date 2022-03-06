@@ -1,9 +1,14 @@
 import { randomQuestion } from "./modules/autoQuiz.js";
 import { endingAnimation } from "./modules/endingAnimation.js";
-import { setCookie, getCookie, cookieInit } from "./modules/cookies.js";
-import { statistic, instructionModal } from "./modules/modals.js";
+import {
+  setCookie,
+  getCookie,
+  cookieInit,
+  getCookieString,
+} from "./modules/cookies.js";
+import { statistic, instructionModal, loggingModal } from "./modules/modals.js";
 import { statistics, chartCookie, rowWins } from "./modules/statistics.js";
-import { playersArr, scoresArr} from "./modules/rank.js";
+import { playersArr, scoresArr, sentRank } from "./modules/rank.js";
 
 // 宣告鍵盤按鈕
 const keyboard = document.querySelectorAll(".keyboard .alphabet");
@@ -17,6 +22,10 @@ const note = document.querySelector(".note");
 //宣告統計Ｍodal
 const chartBar = document.querySelector("#chart");
 const chartBarRank = document.querySelector("#rankChart");
+
+//抓取玩家姓名
+const loggingBtn = document.querySelector("#loggingBtn");
+const loggingInput = document.querySelector("#loggingInput");
 
 //將鍵盤輸入值填入作答空格
 const guessAnswerR1 = document.querySelectorAll(".guessed-alphabetR1");
@@ -37,13 +46,37 @@ let guessedArrR6 = [];
 let question = randomQuestion();
 console.log(question);
 
-//打開玩法解說欄位
-instructionModal.show();
-
 //初始化
 let verification = "";
 let lossTimes = 0;
-cookieInit();
+let playTimes = 0;
+statistics();
+
+//確認是否為新玩家。是的話，開啟登入頁面，並重置cookie。
+let initSetting = playersArr.find((item) => {
+  return item === getCookieString("currentPlayer");
+});
+
+if (initSetting === undefined) {
+  loggingModal.show();
+  cookieInit();
+}
+//將登入名存入cookie，並判斷是否為ＤＢ已有之玩家。
+//沒有的話，存入ＤＢ，並開啟教學。
+
+loggingBtn.addEventListener("click", (e) => {
+  let newPlayer = loggingInput.value;
+  setCookie("currentPlayer", newPlayer);
+
+  let isNewPlayer = playersArr.find((item) => {
+    return item === newPlayer;
+  });
+
+  if (isNewPlayer === undefined) {
+    sentRank(newPlayer);
+    instructionModal.toggle();
+  }
+});
 
 //圖表
 const dataBar = {
@@ -243,11 +276,13 @@ function Round1() {
         chartCookie(0);
         statistics(0);
         endingAnimation(0);
-        enterBtn.removeEventListener("click", enter);
-        deleteBtn.removeEventListener("click", remove);
         keyboards.removeEventListener("click", input);
         return;
-      } else if (verification.length === 5) Round2();
+      } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
+        deleteBtn.removeEventListener("click", remove);
+        Round2();
+      }
     }
   }
 
@@ -374,11 +409,14 @@ function Round2() {
         chartCookie(1);
         statistics(1);
         endingAnimation(1);
-        enterBtn.removeEventListener("click", enter);
-        deleteBtn.removeEventListener("click", remove);
+
         keyboards.removeEventListener("click", input);
         return;
-      } else if (verification.length === 5) Round3();
+      } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
+        deleteBtn.removeEventListener("click", remove);
+        Round3();
+      }
     }
   }
 
@@ -386,7 +424,6 @@ function Round2() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR2.pop();
     guessAnswerR2[counter].innerText = "";
@@ -507,10 +544,14 @@ function Round3() {
         statistics(2);
         endingAnimation(2);
         enterBtn.removeEventListener("click", enter);
+
+        return;
+      } else if (verification.length === 5) {
         deleteBtn.removeEventListener("click", remove);
         keyboards.removeEventListener("click", input);
+        Round4();
         return;
-      } else if (verification.length === 5) Round4();
+      }
     }
   }
 
@@ -518,7 +559,6 @@ function Round3() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR3.pop();
     guessAnswerR3[counter].innerText = "";
@@ -639,10 +679,13 @@ function Round4() {
         statistics(3);
         endingAnimation(3);
         enterBtn.removeEventListener("click", enter);
+        return;
+      } else if (verification.length === 5) {
         deleteBtn.removeEventListener("click", remove);
         keyboards.removeEventListener("click", input);
+        Round5();
         return;
-      } else if (verification.length === 5) Round5();
+      }
     }
   }
 
@@ -650,7 +693,6 @@ function Round4() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR4.pop();
     guessAnswerR4[counter].innerText = "";
@@ -770,11 +812,14 @@ function Round5() {
         chartCookie(4);
         statistics(4);
         endingAnimation(4);
-        enterBtn.removeEventListener("click", enter);
-        deleteBtn.removeEventListener("click", remove);
         keyboards.removeEventListener("click", input);
         return;
-      } else if (verification.length === 5) Round6();
+      } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
+        deleteBtn.removeEventListener("click", remove);
+        Round6();
+        return;
+      }
     }
   }
 
@@ -782,7 +827,6 @@ function Round5() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR5.pop();
     guessAnswerR5[counter].innerText = "";
@@ -899,11 +943,14 @@ function Round6() {
       if (question === guessedArrR6.join("")) {
         chartCookie(5);
         statistics(5);
-        enterBtn.removeEventListener("click", enter);
-        deleteBtn.removeEventListener("click", remove);
+        endingAnimation(5);
         keyboards.removeEventListener("click", input);
         return;
-      } else if (verification.length === 5) wrongEndingAnimation();
+      } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
+        deleteBtn.removeEventListener("click", remove);
+        wrongEndingAnimation();
+      }
     }
   }
 
@@ -916,6 +963,8 @@ function Round6() {
     note.style.display = "block";
     lossTimes = getCookie("lossTimes");
     lossTimes += 1;
+    playTimes = getCookie("playTimes") + 1;
+    setCookie("playTimes", playTimes);
     setCookie("lossTimes", lossTimes);
     setTimeout(() => {
       statistic.show();
@@ -926,7 +975,6 @@ function Round6() {
   //每刪除一個，就需要減少一個COUNTER讓數字後退，於小於0時RETURN。
   deleteBtn.addEventListener("click", remove);
   function remove() {
-    console.log("FUCK");
     if (counter < 0) return;
     guessedArrR6.pop();
     guessAnswerR6[counter].innerText = "";
