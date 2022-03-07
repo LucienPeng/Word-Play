@@ -4,16 +4,12 @@ import {
   setCookie,
   getCookie,
   cookieInit,
+  cookieRender,
   getCookieString,
 } from "./modules/cookies.js";
 import { statistic, instructionModal, loggingModal } from "./modules/modals.js";
-import { statistics, rowWin } from "./modules/statistics.js";
-import {
-  chartRender,
-  playersArr,
-  scoresArr,
-  sentRank,
-} from "./modules/rank.js";
+import { statistics, rowWin, chartCookie } from "./modules/statistics.js";
+import { playersArr, scoresArr, sentRank } from "./modules/rank.js";
 
 // 宣告鍵盤按鈕
 const keyboard = document.querySelectorAll(".keyboard .alphabet");
@@ -953,13 +949,13 @@ function Round6() {
       } else if (verification.length === 5) {
         enterBtn.removeEventListener("click", enter);
         deleteBtn.removeEventListener("click", remove);
-        wrongEndingAnimation();
+        wrongEndingAnimation(5);
       }
     }
   }
 
   //結束時的錯誤動畫提示，並銜接統計數據MODAL
-  let wrongEndingAnimation = () => {
+  let wrongEndingAnimation = (n) => {
     note.innerText = question;
     note.classList.add("animate__animated", "animate__animate__rubberBand");
     note.style.width = "10rem";
@@ -971,6 +967,9 @@ function Round6() {
     //
     playTimes = getCookie("playTimes") + 1;
     setCookie("playTimes", playTimes);
+    //
+    cookieRender();
+    chartCookie(n);
     setTimeout(() => {
       statistic.show();
     }, 2000);

@@ -2,7 +2,6 @@ import { setCookie, getCookie } from "./cookies.js";
 import { statistic } from "./modals.js";
 import { getPlayer, changeRank } from "./rank.js";
 import { cookieRender } from "./cookies.js";
-import { chartRender } from "./rank.js";
 import { chartCookie } from "./statistics.js";
 
 //宣告作答提示

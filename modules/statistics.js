@@ -26,7 +26,6 @@ let chartCookie = (n) => {
   wins = getCookie(`rowWins${n}`) + 1;
   setCookie(`rowWins${n}`, wins);
   rowWin[n] = getCookie(`rowWins${n}`);
-  console.log(rowWin);
   return rowWin;
 };
 
