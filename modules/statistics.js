@@ -4,6 +4,7 @@ const records = document.querySelector(".records");
 
 let winTimes = 0;
 let wins = 0;
+let rowWin = [];
 
 let statistics = () => {
   //Win %
@@ -21,19 +22,20 @@ let statistics = () => {
 
 //chart
 
-let rowWin = [];
-
-let rowWins = () => {
-  for (let i = 0; i < 6; i++) {
-    rowWin.push(getCookie(`rowWins${i}`));
-  }
-  return rowWin;
-};
-
 let chartCookie = (n) => {
   wins = getCookie(`rowWins${n}`) + 1;
   setCookie(`rowWins${n}`, wins);
-  rowWins[n] = getCookie(`rowWins${n}`);
+  rowWin[n] = getCookie(`rowWins${n}`);
+  console.log(rowWin);
+  return rowWin;
 };
 
-export { statistics, chartCookie, rowWins };
+(function rowWinsRender() {
+  for (let i = 0; i < 6; i++) {
+    rowWin.push(getCookie(`rowWins${i}`));
+  }
+  console.log(rowWin);
+  return rowWin;
+})();
+
+export { statistics, chartCookie, rowWin };

@@ -163,10 +163,6 @@ section .container.keyboard .row .col.backspace {
   font-size: 1.5rem;
 }
 
-#instructionModal .demo-section {
-  width: 50%;
-}
-
 #instructionModal .column {
   border: 2px solid #dcdfe4;
   border-radius: 0.2rem;

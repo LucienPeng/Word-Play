@@ -1,6 +1,9 @@
 import { setCookie, getCookie } from "./cookies.js";
 import { statistic } from "./modals.js";
 import { getPlayer, changeRank } from "./rank.js";
+import { cookieRender } from "./cookies.js";
+import { chartRender } from "./rank.js";
+import { chartCookie } from "./statistics.js";
 
 //宣告作答提示
 const note = document.querySelector(".note");
@@ -15,12 +18,17 @@ export let endingAnimation = (n) => {
   note.style.width = "10rem";
   note.style.backgroundColor = "#07b975";
   note.style.display = "block";
-  winTimes = getCookie("winTimes");
-  winTimes = winTimes + 1;
+  //
+  winTimes = getCookie("winTimes") + 1;
   setCookie("winTimes", winTimes);
-  dataChange(playerUpdate.nom);
+  //
   playTimes = getCookie("playTimes") + 1;
   setCookie("playTimes", playTimes);
+  //
+  dataChange(playerUpdate.nom);
+  //
+  cookieRender();
+  chartCookie(n);
   setTimeout(() => {
     statistic.show();
   }, 2000);

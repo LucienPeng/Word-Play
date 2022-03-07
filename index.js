@@ -7,8 +7,13 @@ import {
   getCookieString,
 } from "./modules/cookies.js";
 import { statistic, instructionModal, loggingModal } from "./modules/modals.js";
-import { statistics, chartCookie, rowWins } from "./modules/statistics.js";
-import { playersArr, scoresArr, sentRank } from "./modules/rank.js";
+import { statistics, rowWin } from "./modules/statistics.js";
+import {
+  chartRender,
+  playersArr,
+  scoresArr,
+  sentRank,
+} from "./modules/rank.js";
 
 // 宣告鍵盤按鈕
 const keyboard = document.querySelectorAll(".keyboard .alphabet");
@@ -50,17 +55,21 @@ console.log(question);
 let verification = "";
 let lossTimes = 0;
 let playTimes = 0;
+//cookieInit();
 statistics();
 
 //確認是否為新玩家。是的話，開啟登入頁面，並重置cookie。
-let initSetting = playersArr.find((item) => {
-  return item === getCookieString("currentPlayer");
-});
+(function initialization() {
+  let initSetting = playersArr.find((item) => {
+    return item === getCookieString("currentPlayer");
+  });
 
-if (initSetting === undefined) {
-  loggingModal.show();
-  cookieInit();
-}
+  if (initSetting === undefined) {
+    loggingModal.show();
+    cookieInit();
+  }
+})();
+
 //將登入名存入cookie，並判斷是否為ＤＢ已有之玩家。
 //沒有的話，存入ＤＢ，並開啟教學。
 
@@ -84,7 +93,7 @@ const dataBar = {
   datasets: [
     {
       label: "Played",
-      data: rowWins(),
+      data: rowWin,
       backgroundColor: ["#07b975"],
       borderColor: ["#ffffff"],
       borderWidth: 2,
@@ -273,8 +282,6 @@ function Round1() {
       }
       //  判斷勝利條件
       if (question === guessedArrR1.join("")) {
-        chartCookie(0);
-        statistics(0);
         endingAnimation(0);
         keyboards.removeEventListener("click", input);
         return;
@@ -406,7 +413,6 @@ function Round2() {
       }
       //  判斷勝利條件
       if (question === guessedArrR2.join("")) {
-        chartCookie(1);
         statistics(1);
         endingAnimation(1);
 
@@ -540,15 +546,13 @@ function Round3() {
       }
       //  判斷勝利條件
       if (question === guessedArrR3.join("")) {
-        chartCookie(2);
         statistics(2);
         endingAnimation(2);
-        enterBtn.removeEventListener("click", enter);
-
+        keyboards.removeEventListener("click", input);
         return;
       } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
         deleteBtn.removeEventListener("click", remove);
-        keyboards.removeEventListener("click", input);
         Round4();
         return;
       }
@@ -675,14 +679,13 @@ function Round4() {
       }
       //  判斷勝利條件
       if (question === guessedArrR4.join("")) {
-        chartCookie(3);
         statistics(3);
         endingAnimation(3);
-        enterBtn.removeEventListener("click", enter);
+        keyboards.removeEventListener("click", input);
         return;
       } else if (verification.length === 5) {
+        enterBtn.removeEventListener("click", enter);
         deleteBtn.removeEventListener("click", remove);
-        keyboards.removeEventListener("click", input);
         Round5();
         return;
       }
@@ -809,9 +812,9 @@ function Round5() {
       }
       //  判斷勝利條件
       if (question === guessedArrR5.join("")) {
-        chartCookie(4);
         statistics(4);
         endingAnimation(4);
+
         keyboards.removeEventListener("click", input);
         return;
       } else if (verification.length === 5) {
@@ -878,9 +881,11 @@ function Round6() {
           });
       });
     }
+
     isVacabulary();
     async function isVacabulary() {
       const verification = await isVacabularyAPI();
+
       if (verification === "Request failed with status code 404") {
         note.innerText = "This is not a word!";
         note.classList.add("animate__animated", "animate__wobble");
@@ -941,7 +946,6 @@ function Round6() {
       }
       //  判斷勝利條件
       if (question === guessedArrR6.join("")) {
-        chartCookie(5);
         statistics(5);
         endingAnimation(5);
         keyboards.removeEventListener("click", input);
@@ -959,13 +963,14 @@ function Round6() {
     note.innerText = question;
     note.classList.add("animate__animated", "animate__animate__rubberBand");
     note.style.width = "10rem";
-    note.style.backgroundColor = "#db458b";
+    note.style.backgroundColor = "#FF0000";
     note.style.display = "block";
-    lossTimes = getCookie("lossTimes");
-    lossTimes += 1;
+    //
+    lossTimes = getCookie("lossTimes") + 1;
+    setCookie("lossTimes", lossTimes);
+    //
     playTimes = getCookie("playTimes") + 1;
     setCookie("playTimes", playTimes);
-    setCookie("lossTimes", lossTimes);
     setTimeout(() => {
       statistic.show();
     }, 2000);

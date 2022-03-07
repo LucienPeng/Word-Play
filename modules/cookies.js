@@ -28,11 +28,13 @@ function cookieInit() {
   for (let i = 0; i < 6; i++) {
     setCookie(`rowWins${i}`, 0);
   }
+}
 
+function cookieRender() {
   records.children[0].children[0].innerText = getCookie("playTimes");
   records.children[1].children[0].innerText = getCookie("winTimes");
   records.children[2].children[0].innerText = getCookie("lossTimes");
   records.children[3].children[0].innerText = getCookie("percentage");
 }
 
-export { setCookie, getCookie, cookieInit, getCookieString };
+export { setCookie, getCookie, cookieInit, getCookieString, cookieRender };
