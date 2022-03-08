@@ -1,5 +1,8 @@
 import { randomQuestion } from "./modules/autoQuiz.js";
 import { endingAnimation } from "./modules/endingAnimation.js";
+import { statistic, instructionModal, loggingModal } from "./modules/modals.js";
+import { statistics, rowWin, chartCookie } from "./modules/statistics.js";
+import { playersArr, scoresArr, sentRank } from "./modules/rank.js";
 import {
   setCookie,
   getCookie,
@@ -7,9 +10,6 @@ import {
   cookieRender,
   getCookieString,
 } from "./modules/cookies.js";
-import { statistic, instructionModal, loggingModal } from "./modules/modals.js";
-import { statistics, rowWin, chartCookie } from "./modules/statistics.js";
-import { playersArr, scoresArr, sentRank } from "./modules/rank.js";
 
 // 宣告鍵盤按鈕
 const keyboard = document.querySelectorAll(".keyboard .alphabet");
