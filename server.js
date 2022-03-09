@@ -6,10 +6,10 @@ import { Player } from "./modules/schema.js";
 const app = express();
 
 // DB ACC/PSW Settings
-const username = encodeURIComponent("Lucien");
+const username = encodeURIComponent("lucien");
 const password = encodeURIComponent("/nxfl7zp");
-const database = encodeURIComponent("");
-const uri = `mongodb+srv:${username}:${password}@rank.xudxl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
+const database = encodeURIComponent("Players-Rank");
+const uri = `mongodb+srv://${username}:${password}@rank.xudxl.mongodb.net/${database}?retryWrites=true&w=majority`;
 
 //Connection
 mongoose
