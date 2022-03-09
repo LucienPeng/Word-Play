@@ -2,7 +2,7 @@ import { setCookie, getCookie } from "./cookies.js";
 import { statistic } from "./modals.js";
 import { getPlayer, changeRank } from "./rank.js";
 import { cookieRender } from "./cookies.js";
-import { chartCookie } from "./statistics.js";
+import { chartCookie, statistics } from "./statistics.js";
 
 //宣告作答提示
 const note = document.querySelector(".note");
@@ -27,6 +27,7 @@ export let endingAnimation = (n) => {
   dataChange(playerUpdate.nom);
   //
   cookieRender();
+  statistics();
   chartCookie(n);
   setTimeout(() => {
     statistic.show();

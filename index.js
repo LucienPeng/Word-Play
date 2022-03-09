@@ -178,7 +178,7 @@ function Round1() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -309,7 +309,7 @@ function Round2() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -442,7 +442,7 @@ function Round3() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -575,7 +575,7 @@ function Round4() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -708,7 +708,7 @@ function Round5() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -842,7 +842,7 @@ function Round6() {
   keyboards.addEventListener("click", input);
   function input(e) {
     if (counter > 3) return;
-    let guessedLetter = e.target.innerText;
+    let guessedLetter = e.target.textContent;
     if (guessedLetter.length !== 1) return;
     else {
       counter += 1;
@@ -969,7 +969,7 @@ function Round6() {
     setCookie("playTimes", playTimes);
     //
     cookieRender();
-    chartCookie(n);
+    statistics();
     setTimeout(() => {
       statistic.show();
     }, 2000);
