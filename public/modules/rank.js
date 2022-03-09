@@ -2,7 +2,7 @@
 function getRank() {
   return new Promise((resolve) => {
     const response = axios
-      .get("https://leaflix-east.herokuapp.com/player")
+      .get("https://wordplay-wordle.herokuapp.com/player")
       .then((response) => {
         resolve(response.data);
       })
@@ -31,7 +31,7 @@ export { playersArr, scoresArr };
 
 export function sentRank(newPlayer) {
   const response = axios
-    .post("https://leaflix-east.herokuapp.com/player", {
+    .post("https://wordplay-wordle.herokuapp.com/player", {
       nom: newPlayer,
       score: 0,
     })
@@ -47,7 +47,7 @@ export function sentRank(newPlayer) {
 export function getPlayer(player) {
   return new Promise((resolve) => {
     const response = axios
-      .get(`https://leaflix-east.herokuapp.com/player/${player}`)
+      .get(`https://wordplay-wordle.herokuapp.com/${player}`)
       .then((response) => {
         resolve(response.data);
       })
@@ -60,7 +60,7 @@ export function getPlayer(player) {
 //更改分數
 export function changeRank(nom, score) {
   const response = axios
-    .post("https://leaflix-east.herokuapp.com/playerupdate", {
+    .post("https://wordplay-wordle.herokuapp.com/playerupdate", {
       nom: nom,
       score: score,
     })
@@ -76,7 +76,7 @@ export async function chartRender() {
   function getRank() {
     return new Promise((resolve) => {
       const response = axios
-        .get("https://leaflix-east.herokuapp.com/player")
+        .get("https://wordplay-wordle.herokuapp.com/player")
         .then((response) => {
           resolve(response.data);
         })

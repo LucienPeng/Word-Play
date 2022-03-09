@@ -1,6 +1,10 @@
 import { randomQuestion } from "../modules/autoQuiz.js";
 import { endingAnimation } from "../modules/endingAnimation.js";
-import { statistic, instructionModal, loggingModal } from "../modules/modals.js";
+import {
+  statistic,
+  instructionModal,
+  loggingModal,
+} from "../modules/modals.js";
 import { statistics, rowWin, chartCookie } from "../modules/statistics.js";
 import { playersArr, scoresArr, sentRank } from "../modules/rank.js";
 import {

@@ -97,10 +97,6 @@ app.get("/player/:nom", async (req, res) => {
   }
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Well connected");
-// });
-
 app.get("/", (req, res) => {
   res.render("index.html");
 });
