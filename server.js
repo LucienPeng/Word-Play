@@ -2,7 +2,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
-import { Player } from "./modules/schema.js";
+import { Player } from "./public/modules/schema.js";
 const app = express();
 
 // DB ACC/PSW Settings
