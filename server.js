@@ -97,12 +97,12 @@ app.get("/player/:nom", async (req, res) => {
   }
 });
 
-app.get("/word-play", (req, res) => {
-  res.send("Well connected");
-});
+// app.get("/", (req, res) => {
+//   res.send("Well connected");
+// });
 
 app.get("/", (req, res) => {
-  res.render("Question.html");
+  res.render("index.html");
 });
 
 app.listen(process.env.PORT || 3000, () => console.log("Server is running..."));
