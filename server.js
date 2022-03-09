@@ -8,8 +8,8 @@ const app = express();
 // DB ACC/PSW Settings
 const username = encodeURIComponent("Lucien");
 const password = encodeURIComponent("/nxfl7zp");
-const database = encodeURIComponent("sample_mflix");
-const uri = `mongodb+srv://${username}:${password}@leaflix-east.cpen3.mongodb.net/${database}?retryWrites=true&w=majority`;
+const database = encodeURIComponent("");
+const uri = `mongodb+srv:${username}:${password}@rank.xudxl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
 //Connection
 mongoose
