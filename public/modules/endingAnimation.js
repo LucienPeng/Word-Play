@@ -1,6 +1,6 @@
-import { setCookie, getCookie } from "./cookies.js";
+import { setCookie, getCookie, getCookieString } from "./cookies.js";
 import { statistic } from "./modals.js";
-import { getPlayer, changeRank } from "./rank.js";
+//import { getPlayer } from "./rank.js";
 import { cookieRender } from "./cookies.js";
 import { chartCookie, statistics } from "./statistics.js";
 
@@ -24,7 +24,7 @@ export let endingAnimation = (n) => {
   playTimes = getCookie("playTimes") + 1;
   setCookie("playTimes", playTimes);
   //
-  dataChange(playerUpdate.nom);
+  dataChange(getCookieString("currentPlayer"));
   //
   cookieRender();
   statistics();
@@ -34,20 +34,35 @@ export let endingAnimation = (n) => {
   }, 2000);
 };
 
-//更改分數
-//抓取玩家姓名
-const loggingBtn = document.querySelector("#loggingBtn");
-const loggingInput = document.querySelector("#loggingInput");
-
-let playerUpdate = {
-  nom: "",
-  score: 0,
-};
-loggingBtn.addEventListener("click", (e) => {
-  playerUpdate.nom = loggingInput.value;
-});
-
+//更改資料庫內的分數
 async function dataChange(name) {
-  let data = await getPlayer(name);
-  await changeRank(data[0].nom, data[0].score + 1);
+  let data = await getPlayer(name); //取得DB玩家資料
+  await changeRank(data[0].nom, data[0].score); //變更玩家ＤＢ內分數
+}
+
+function getPlayer(player) {
+  return new Promise((resolve) => {
+    const response = axios
+      .get(`https://wordplay-wordle.herokuapp.com/player/${player}`)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((err) => {
+        resolve("error", err);
+      });
+  });
+}
+
+function changeRank(nom, score) {
+  const response = axios
+    .post("https://wordplay-wordle.herokuapp.com/playerupdate", {
+      nom: nom,
+      score: score + 1,
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }

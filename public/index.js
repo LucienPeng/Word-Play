@@ -72,7 +72,6 @@ statistics();
 
 //將登入名存入cookie，並判斷是否為ＤＢ已有之玩家。
 //沒有的話，存入ＤＢ，並開啟教學。
-
 loggingBtn.addEventListener("click", (e) => {
   let newPlayer = loggingInput.value;
   setCookie("currentPlayer", newPlayer);

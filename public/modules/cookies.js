@@ -25,6 +25,7 @@ function cookieInit() {
   setCookie("winTimes", 0);
   setCookie("lossTimes", 0);
   setCookie("percentage", 0);
+  //setCookie("currentPlayer", "");
   for (let i = 0; i < 6; i++) {
     setCookie(`rowWins${i}`, 0);
   }

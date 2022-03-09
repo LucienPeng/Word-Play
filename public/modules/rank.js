@@ -43,35 +43,6 @@ export function sentRank(newPlayer) {
     });
 }
 
-//找出對應玩家
-export function getPlayer(player) {
-  return new Promise((resolve) => {
-    const response = axios
-      .get(`https://wordplay-wordle.herokuapp.com/${player}`)
-      .then((response) => {
-        resolve(response.data);
-      })
-      .catch((err) => {
-        resolve("error", message);
-      });
-  });
-}
-
-//更改分數
-export function changeRank(nom, score) {
-  const response = axios
-    .post("https://wordplay-wordle.herokuapp.com/playerupdate", {
-      nom: nom,
-      score: score,
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}
-
 export async function chartRender() {
   function getRank() {
     return new Promise((resolve) => {

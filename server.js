@@ -55,11 +55,11 @@ app.post("/player", async (req, res) => {
   await newPlayer
     .save()
     .then(() => {
-      res.send("Data has been well saved");
-      console.log("Data has been well saved");
+      res.send("New rank has been sent to DB");
+      console.log("New rank has been sent to DB");
     })
     .catch((e) => {
-      console.log("Player not accepted.");
+      console.log("New rank has not accepted.");
       console.log(e);
     });
 });
@@ -101,6 +101,6 @@ app.get("/", (req, res) => {
   res.render("index.html");
 });
 
-app.listen(process.env.PORT || 3000, () =>
+app.listen(process.env.PORT || 8080, () =>
   console.log("Server is running on port 3000...")
 );
