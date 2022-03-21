@@ -3,13 +3,11 @@ import express from "express";
 import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import { Player } from "./public/modules/schema.js";
-const app = express();
+import dotenv from "dotenv";
+dotenv.config();
 
-// DB ACC/PSW Settings
-const username = encodeURIComponent("lucien");
-const password = encodeURIComponent("/nxfl7zp");
-const database = encodeURIComponent("Players-Rank");
-const uri = `mongodb+srv://${username}:${password}@rank.xudxl.mongodb.net/${database}?retryWrites=true&w=majority`;
+const app = express();
+const uri = process.env.MONGODB_URI;
 
 //Connection
 mongoose

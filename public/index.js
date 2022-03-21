@@ -221,6 +221,13 @@ function Round1() {
     async function isVacabulary() {
       const verification = await isVacabularyAPI();
 
+
+      // 步驟
+      // input: sheep answer:  quote
+      // 1. 全部都對  2. 全部都錯  3. 包含但是位置不對 
+      
+
+
       if (verification === "Request failed with status code 404") {
         note.innerText = "This is not a word!";
         note.classList.add("animate__animated", "animate__wobble");
