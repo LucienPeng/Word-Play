@@ -18,7 +18,7 @@ const questionsDB = [
   { id: 16, question: "QUOTA" },
   { id: 17, question: "PAINT" },
   { id: 18, question: "CLONE" },
-  { id: 19, question: "WINER" },
+  { id: 19, question: "STONE" },
   { id: 20, question: "LOSER" },
 ];
 
